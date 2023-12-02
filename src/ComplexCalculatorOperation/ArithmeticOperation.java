@@ -1,6 +1,6 @@
 package ComplexCalculatorOperation;
 
-import ComplexCalculatorException.NotEnoughData;
+import ComplexCalculatorException.NotEnoughDataException;
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 
@@ -28,7 +28,7 @@ public class ArithmeticOperation extends Operation {
     
     public void sum(){
         if(stack.size()<2)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
         stack.push(n2.sum(n1));
@@ -36,7 +36,7 @@ public class ArithmeticOperation extends Operation {
     
     public void subtraction(){
         if(stack.size()<2)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
         stack.push(n2.sub(n1));
@@ -44,7 +44,7 @@ public class ArithmeticOperation extends Operation {
     
     public void product(){
         if(stack.size()<2)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
         stack.push(n2.product(n1));
@@ -52,7 +52,7 @@ public class ArithmeticOperation extends Operation {
     
     public void division(){
         if(stack.size()<2)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
         
@@ -61,14 +61,14 @@ public class ArithmeticOperation extends Operation {
     
     public void sqrt(){
         if(stack.size()<1)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n = stack.pop();
         stack.push(n.sqrt());
     }
     
     public void inversion(){
         if(stack.size()<1)
-            throw new NotEnoughData();
+            throw new NotEnoughDataException();
         Complex n = stack.pop();
         stack.push(n.negate());
     }

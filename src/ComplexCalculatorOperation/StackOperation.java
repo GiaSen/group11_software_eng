@@ -2,6 +2,7 @@ package ComplexCalculatorOperation;
 
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
+import ComplexCalculatorException.NotEnoughStackElementsException;
 
 public class StackOperation extends Operation {
 
@@ -28,14 +29,20 @@ public class StackOperation extends Operation {
     }
 
     public void drop() {
+        if(stack.size() < 1)
+            throw new NotEnoughStackElementsException();
         stack.removeFirst();
     }
     
     public void dup() {
+        if(stack.size() < 1)
+            throw new NotEnoughStackElementsException();
         stack.push(stack.peek());
     }
     
     public void swap() {
+        if(stack.size() < 2)
+            throw new NotEnoughStackElementsException();
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
         stack.push(n1);
@@ -43,6 +50,8 @@ public class StackOperation extends Operation {
     }
     
     public void over() {
+        if(stack.size() < 2)
+            throw new NotEnoughStackElementsException();
         Complex n1 = stack.pop();
         Complex n2 = stack.peek();
         stack.push(n1);
