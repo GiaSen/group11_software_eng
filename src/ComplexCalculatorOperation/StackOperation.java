@@ -10,7 +10,7 @@ public class StackOperation extends Operation {
     }
 
     @Override
-    public void interpreter(String input){
+    public void operationInterpreter(String input){
         if(input.equals("clear"))
             clear();
         else if(input.equals("drop"))

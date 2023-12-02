@@ -50,11 +50,11 @@ public class Calcolatrice {
         }
         
         if (variable)
-            variableOperation.interpreter(input);
+            variableOperation.operationInterpreter(input);
         else if (operation)
-            arithmeticOperation.interpreter(input);
+            arithmeticOperation.operationInterpreter(input);
         else if (stackoperation)
-            stackOperation.interpreter(input);
+            stackOperation.operationInterpreter(input);
         else {
             stack.push(new Complex(input));
         }

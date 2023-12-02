@@ -17,7 +17,7 @@ public class VariableOperation extends Operation {
         map.put(input, null);}
     
     @Override
-    public void interpreter(String s) {
+    public void operationInterpreter(String s) {
         String fields[] = s.split("[><+-]");
         if (s.contains(">")) {
             fromStackToVar(fields[1]);

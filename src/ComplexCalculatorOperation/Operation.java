@@ -11,6 +11,6 @@ public abstract class Operation {
         this.stack = stack;
     }
 
-    public abstract void interpreter(String s);
+    public abstract void operationInterpreter(String s);
 
 }

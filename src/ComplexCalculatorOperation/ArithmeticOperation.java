@@ -11,7 +11,7 @@ public class ArithmeticOperation extends Operation {
     }
 
     @Override
-    public void interpreter(String input){
+    public void operationInterpreter(String input){
        if(input.equals("+"))
             sum();
         else if(input.equals("-"))
