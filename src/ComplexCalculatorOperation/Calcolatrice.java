@@ -59,11 +59,7 @@ public class Calcolatrice {
             stack.push(new Complex(input));
         }
     }
-    
-    public void add(Complex n){
-        stack.addFirst(n);
-    }
-    
+        
     public void stampaStack(){
         System.out.println("Stack:");
         stack.forEach(e -> {
