@@ -4,10 +4,10 @@ import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 
 public class Calcolatrice {
-    protected final ArrayDeque<Complex> stack;
-    protected final Operation arithmeticOperation;
-    protected final Operation stackOperation;
-    protected final Operation variableOperation;
+    private final ArrayDeque<Complex> stack;
+    private final Operation arithmeticOperation;
+    private final Operation stackOperation;
+    private final Operation variableOperation;
     
     
     public Calcolatrice(){
