@@ -15,7 +15,7 @@ public class ArithmeticOperation extends Operation {
        if(input.equals("+"))
             sum();
         else if(input.equals("-"))
-            subtraction();
+            sub();
         else if(input.equals("*"))
             product();
         else if(input.equals("/"))
@@ -34,7 +34,7 @@ public class ArithmeticOperation extends Operation {
         stack.push(n2.sum(n1));
     }
     
-    public void subtraction(){
+    public void sub(){
         if(stack.size()<2)
             throw new NotEnoughDataException();
         Complex n1 = stack.pop();
