@@ -1,12 +1,12 @@
 package ComplexCalculator;
 
 import java.util.Scanner;
-import ComplexCalculatorOperation.Calcolatrice;
+import ComplexCalculatorOperation.Calculator;
 
 public class StackComplexCalculator {
 
     public static void main(String[] args) {
-        Calcolatrice c = new Calcolatrice();
+        Calculator c = new Calculator();
         
         while(true){
             Scanner scanner = new Scanner(System.in);
