@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 public final class Complex implements Serializable  {
     
-    private static final Complex NAN = new Complex(Double.NaN, Double.NaN);
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
     private static final double ONE_OVER_ROOT2 = 0.7071067811865476;
     
@@ -234,21 +233,6 @@ public final class Complex implements Serializable  {
     
     public Complex sqrt() {
         
-        // Handle NaN
-        if (Double.isNaN(real) || Double.isNaN(imaginary)) {
-            // Check for infinite
-            if (Double.isInfinite(imaginary)) {
-                return new Complex(Double.POSITIVE_INFINITY, imaginary);
-            }
-            if (Double.isInfinite(real)) {
-                if (real == Double.NEGATIVE_INFINITY) {
-                    return new Complex(Double.NaN, Math.copySign(Double.POSITIVE_INFINITY, imaginary));
-                }
-                return new Complex(Double.POSITIVE_INFINITY, Double.NaN);
-            }
-            return NAN;
-        }
-
         // Compute with positive values and determine sign at the end
         final double x = Math.abs(real);
         final double y = Math.abs(imaginary);
