@@ -328,6 +328,10 @@ public final class Complex implements Serializable  {
         return String.valueOf((float) n);
     }
     
+    public static boolean isComplex(String s) {
+        return s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$");
+    }
+
     @Override
     public String toString() {
         if (imaginary == 0)
