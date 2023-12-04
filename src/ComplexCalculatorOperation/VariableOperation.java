@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.NotEnoughStackElementsException;
+import ComplexCalculatorException.VariableException;
 
 public class VariableOperation extends Operation {
     private HashMap<String,Complex> map;
@@ -36,6 +37,8 @@ public class VariableOperation extends Operation {
     }
     
     public void fromVarToStack(String s) {
+        if(!map.containsKey(s))
+            throw new VariableException();
         stack.push(map.get(s));
     }
 

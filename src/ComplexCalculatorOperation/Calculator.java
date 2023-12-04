@@ -2,6 +2,7 @@ package ComplexCalculatorOperation;
 
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
+import ComplexCalculatorException.*;
 
 public class Calculator {
     private final ArrayDeque<Complex> stack;
@@ -26,7 +27,7 @@ public class Calculator {
         String[] stackOperations = {"clear", "drop", "dup", "swap", "over"};
         String[] operations = {"+","-","*","/","+-","sqrt"};
         
-        if (input.matches(".*[a-z]") & input.length() == 2 | input.equals("varMap")) {
+        if (input.matches("[<+\\->][a-z]$") | input.equals("varMap")) {
             for (String op : variableOperations) {
                 if (input.contains(op)) {
                     variable = true;
@@ -55,11 +56,14 @@ public class Calculator {
             arithmeticOperation.operationInterpreter(input);
         else if (stackoperation)
             stackOperation.operationInterpreter(input);
-        else {
+        else if(Complex.isComplex(input)){
             stack.push(new Complex(input));
         }
+        else{
+            throw new InvalidInputException();
+        }
     }
-        
+
     public void stampaStack(){
         System.out.println("Stack:");
         stack.forEach(e -> {
