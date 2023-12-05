@@ -1,19 +1,34 @@
 package ComplexCalculator;
 
-import java.util.Scanner;
-import ComplexCalculatorOperation.Calculator;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class StackComplexCalculator {
+/**
+ *
+ * @author giasen
+ */
+public class StackComplexCalculator extends Application {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("ComplexCalculatorView.fxml"));
+        
+        Scene scene = new Scene(root);
+        stage.setResizable(false);
 
-    public static void main(String[] args) {
-        Calculator c = new Calculator();
-        
-        while(true){
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-        
-            c.interpreter(input);
-            c.stampaStack();
-        }
+        stage.setScene(scene);
+        stage.show();
     }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
 }
