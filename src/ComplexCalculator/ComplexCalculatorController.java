@@ -7,13 +7,19 @@ package ComplexCalculator;
 import ComplexCalculatorOperation.Calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  *
@@ -26,12 +32,17 @@ public class ComplexCalculatorController implements Initializable {
     @FXML
     private TextField textInput;
     @FXML
-    private ListView<?> stackView;
-        
+    private ListView<Complex> stackView;
+    
+    private Calculator c = new Calculator();
+    private ObservableList<Complex> oblist = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        stackView.setItems(oblist);
+
     }
+                
 
     @FXML
     private void handleEasyButton(ActionEvent event) {
@@ -72,7 +83,16 @@ public class ComplexCalculatorController implements Initializable {
 
     @FXML
     private void handleEnter(ActionEvent event) {
-
+        
+        try{
+            c.interpreter(textInput.getText());
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }finally{
+            textInput.setText("");
+            oblist.setAll(c.getStack());
+        }
     }
     
 }

@@ -70,4 +70,10 @@ public class Calculator {
             System.out.println(e);
         });
     }
+
+    public ArrayDeque<Complex> getStack() {
+        return stack;
+    }
+    
+    
 }
