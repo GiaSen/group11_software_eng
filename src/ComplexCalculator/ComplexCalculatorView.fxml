@@ -31,22 +31,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&gt;x" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="pushVar" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&gt;x" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&lt;x" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="popVar" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&lt;x" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="+x" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="sumVar" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="+x" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button fx:id="subVar" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="50.0" prefWidth="60.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDAE5B;" text="⌫" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDAE5B;" text="⌫" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -117,12 +117,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleMultiplyAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="x" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#handleMultiplyAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="*" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleDivisionAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="÷" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#handleDivisionAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="/" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -167,14 +167,14 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleInvertButton" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="+/-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#handleInvertButton" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="+-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleSqrtAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="√" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#handleSqrtAction" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #A2806C;" text="sqrt" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="50.0" prefWidth="50.0" style="-fx-border-insets: -2; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #B4F56D;" text="⏎" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">

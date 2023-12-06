@@ -7,6 +7,9 @@ package ComplexCalculator;
 import ComplexCalculatorOperation.Calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,31 +21,59 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 /**
  *
  * @author giasen
  */
 public class ComplexCalculatorController implements Initializable {
-    
+
     @FXML
-    private ComboBox<?> varList;
+    private ComboBox<Character> varList;
     @FXML
     private TextField textInput;
     @FXML
     private ListView<Complex> stackView;
-    
+
     private Calculator c = new Calculator();
     private ObservableList<Complex> oblist = FXCollections.observableArrayList();
-    
+    private ObservableList<Character> combolist = FXCollections.observableArrayList();
+
+    @FXML
+    private Button pushVar;
+    @FXML
+    private Button popVar;
+    @FXML
+    private Button sumVar;
+    @FXML
+    private Button subVar;
+    @FXML
+    private Button deleteButton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         stackView.setItems(oblist);
+        initBinding();
+        initVarList();
+       
+        stackView.setCellFactory(lv -> {
+            ListCell<Complex> cell = new ListCell<Complex>() {
+                @Override
+                protected void updateItem(Complex c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (empty) {
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(c.toString());
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER);
 
+            return cell;
+        });
     }
-                
 
     @FXML
     private void handleEasyButton(ActionEvent event) {
@@ -83,16 +114,40 @@ public class ComplexCalculatorController implements Initializable {
 
     @FXML
     private void handleEnter(ActionEvent event) {
-        
-        try{
+
+        try {
             c.interpreter(textInput.getText());
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             textInput.setText("");
             oblist.setAll(c.getStack());
         }
     }
+
+    private void initBinding() {
+        StringProperty btn0 = new SimpleStringProperty(">");
+        pushVar.textProperty().bind(Bindings.concat(">", varList.valueProperty()));
+
+        StringProperty btn1 = new SimpleStringProperty("<");
+        popVar.textProperty().bind(Bindings.concat("<", varList.valueProperty()));
+
+        StringProperty btn2 = new SimpleStringProperty("+");
+        sumVar.textProperty().bind(Bindings.concat("+", varList.valueProperty()));
+
+        StringProperty btn3 = new SimpleStringProperty("-");
+        subVar.textProperty().bind(Bindings.concat("-", varList.valueProperty()));
+        
+        deleteButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
+    }
     
+    private void initVarList(){
+        varList.getSelectionModel().select('a');
+        for(Character i = 'a'; i <= 'z'; i++){
+            combolist.add(i);
+        }
+        varList.setItems(combolist);
+        varList.getSelectionModel().selectFirst();
+    }
 }
