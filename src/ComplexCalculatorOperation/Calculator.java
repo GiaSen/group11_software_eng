@@ -45,7 +45,7 @@ public class Calculator {
         }
         
         for (String op:stackOperations) {
-            if (input.contains(op)) {
+            if (input.equalsIgnoreCase(op)) {
                 stackoperation = true;
             }
         }

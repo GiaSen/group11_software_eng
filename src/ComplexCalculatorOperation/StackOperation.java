@@ -12,15 +12,15 @@ public class StackOperation extends Operation {
 
     @Override
     public void operationInterpreter(String input){
-        if(input.equals("clear"))
+        if(input.equalsIgnoreCase("clear"))
             clear();
-        else if(input.equals("drop"))
+        else if(input.equalsIgnoreCase("drop"))
             drop();
-        else if(input.equals("dup"))
+        else if(input.equalsIgnoreCase("dup"))
             dup();
-        else if(input.equals("swap"))
+        else if(input.equalsIgnoreCase("swap"))
             swap();
-        else if(input.equals("over"))
+        else if(input.equalsIgnoreCase("over"))
             over();
     }
     
