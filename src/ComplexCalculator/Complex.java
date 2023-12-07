@@ -8,7 +8,7 @@ public final class Complex implements Serializable  {
     
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
     private static final double ONE_OVER_ROOT2 = 0.7071067811865476;
-    
+
     private final double imaginary;
     private final double real;
 
@@ -17,159 +17,150 @@ public final class Complex implements Serializable  {
         this.imaginary = imaginary;
     }
 
-    public Complex(String s){
+    public Complex(String s) {
         double a = 0.0;
         double b = 0.0;
-        s = s.replaceAll("\\s","");
-        
+        s = s.replaceAll("\\s", "");
+
         String[] parts = s.split("[+-]");
         String[] posParts = s.split("[+]");
         String[] negParts = s.split("[-]");
-        
-        if(s.contains("i"))
-            throw new InvalidInputException("Usare j come costante immaginaria");
- 
-        if(parts.length == 1){ 
+
+        if (parts.length == 1) {
             // numero complesso bj
-            if(s.contains("j")){
-                s = s.replace("j","");
+            if (s.contains("j")) {
+                s = s.replace("j", "");
                 a = 0.0;
                 b = Double.parseDouble(s);
-            }
-            // numero complesso a
+            } // numero complesso a
             else {
                 a = Double.parseDouble(s);
                 b = 0.0;
             }
-        }
-        
-        else if(parts.length == 2){
-            if(posParts.length == 2){
+        } else if (parts.length == 2) {
+            if (posParts.length == 2) {
                 // numero complesso +bj
-                if(posParts[0].equals("")){
-                    if(posParts[1].contains("j")){
-                        String j = posParts[1].replace("j","");
+                if (posParts[0].equals("")) {
+                    if (posParts[1].contains("j")) {
+                        String j = posParts[1].replace("j", "");
                         a = 0.0;
                         b = Double.parseDouble(j);
-                    }
-                    // numero complesso +a
+                    } // numero complesso +a
                     else {
                         a = Double.parseDouble(posParts[1]);
                         b = 0.0;
                     }
-                }
-                // numero complesso bj+a
-                else if(posParts[0].contains("j")){
-                    String j = posParts[0].replace("j","");
+                } // numero complesso bj+a
+                else if (posParts[0].contains("j")) {
+                    String j = posParts[0].replace("j", "");
                     a = Double.parseDouble(posParts[1]);
                     b = Double.parseDouble(j);
-                }
-                // numero complesso a+bj
-                else {
-                    String j = posParts[1].replace("j","");
+                } // numero complesso a+bj
+                else if (posParts[1].equals("j")) {
+                    a = Double.parseDouble(posParts[0]);
+                    b = 1.0;
+                } else {
+                    String j = posParts[1].replace("j", "");
                     a = Double.parseDouble(posParts[0]);
                     b = Double.parseDouble(j);
                 }
-            }
-            
-            else if(negParts.length == 2){
-                if(negParts[0].equals("")){
+            } else if (negParts.length == 2) {
+                if (negParts[0].equals("")) {
                     // numero complesso -bj
-                    if(negParts[1].contains("j")){
-                        String j = negParts[1].replace("j","");
+                    if (negParts[1].contains("j")) {
+                        String j = negParts[1].replace("j", "");
                         System.out.println(j);
                         a = 0.0;
-                        b = - Double.parseDouble(j);
-                    }
-                    // numero complesso -a
+                        b = -Double.parseDouble(j);
+                    } // numero complesso -a
                     else {
-                        a = - Double.parseDouble(negParts[1]);
+                        a = -Double.parseDouble(negParts[1]);
                         b = 0.0;
                     }
-                }
-                // numero complesso bj-a 
-                else if(negParts[0].contains("j")){
-                    String j = negParts[0].replace("j","");
-                    a = - Double.parseDouble(negParts[1]);
+                } // numero complesso bj-a 
+                else if (negParts[0].contains("j")) {
+                    String j = negParts[0].replace("j", "");
+                    a = -Double.parseDouble(negParts[1]);
                     b = Double.parseDouble(j);
-                }
-                // numero complesso a-bj
-                else {
-                    String j = negParts[1].replace("j","");
+                } // numero complesso a-bj
+                else if (negParts[1].equals("j")) {
                     a = Double.parseDouble(negParts[0]);
-                    b = - Double.parseDouble(j);
+                    b = -1.0;
+                } else {
+                    String j = negParts[1].replace("j", "");
+                    a = Double.parseDouble(negParts[0]);
+                    b = -Double.parseDouble(j);
                 }
             }
-        }
-        
-        else if (parts.length == 3){            
-            if(posParts.length == 3 & posParts[0].equals("")){
+        } else if (parts.length == 3) {
+            if (posParts.length == 3 & posParts[0].equals("")) {
                 // numero complesso +bj+a
-                if(posParts[1].contains("j")){
-                    String j = posParts[1].replace("j","");
+                if (posParts[1].contains("j")) {
+                    String j = posParts[1].replace("j", "");
                     a = Double.parseDouble(posParts[2]);
                     b = Double.parseDouble(j);
-                }
-                // numero complesso +a+bj
-                else {
-                    String j = posParts[2].replace("j","");
+                } // numero complesso +a+bj
+                else if (posParts[2].equals("j")) {
+                    a = Double.parseDouble(posParts[1]);
+                    b = 1.0;
+                } else {
+                    String j = posParts[2].replace("j", "");
                     a = Double.parseDouble(posParts[1]);
                     b = Double.parseDouble(j);
                 }
-            }
-            
-            else if(negParts.length == 3 & negParts[0].equals("")){
+            } else if (negParts.length == 3 & negParts[0].equals("")) {
                 // numero complesso -bj-a
-                if(negParts[1].contains("j")){
-                    String j = negParts[1].replace("j","");
-                    a = - Double.parseDouble(negParts[2]);
-                    b = - Double.parseDouble(j);
+                if (negParts[1].contains("j")) {
+                    String j = negParts[1].replace("j", "");
+                    a = -Double.parseDouble(negParts[2]);
+                    b = -Double.parseDouble(j);
+                } // numero complesso -a-bj
+                else if (negParts[2].equals("j")) {
+                    a = -Double.parseDouble(negParts[1]);
+                    b = -1.0;
+                } else {
+                    String j = negParts[2].replace("j", "");
+                    a = -Double.parseDouble(negParts[1]);
+                    b = -Double.parseDouble(j);
                 }
-                // numero complesso -a-bj
-                else {
-                    String j = negParts[2].replace("j","");
-                    a = - Double.parseDouble(negParts[1]);
-                    b = - Double.parseDouble(j);
-                }
-            }
-            
-            else if(posParts[0].equals("") & posParts[1].contains("-")){
+            } else if (posParts[0].equals("") & posParts[1].contains("-")) {
                 String[] w = posParts[1].split("[-]");
                 // numero complesso +bj-a
-                if(w[0].contains("j")){
-                    a = - Double.parseDouble(w[1]);
-                    b = Double.parseDouble(w[0].replace("j",""));
-                }
-                // numero complesso +a-bj
-                else {
+                if (w[0].contains("j")) {
+                    a = -Double.parseDouble(w[1]);
+                    b = Double.parseDouble(w[0].replace("j", ""));
+                } // numero complesso +a-bj
+                else if (w[1].equals("j")) {
                     a = Double.parseDouble(w[0]);
-                    b = - Double.parseDouble(w[1].replace("j",""));
+                    b = -1.0;
+                } else {
+                    a = Double.parseDouble(w[0]);
+                    b = -Double.parseDouble(w[1].replace("j", ""));
                 }
-            }
-            
-            else if(negParts[0].equals("") & negParts[1].contains("+")){
+            } else if (negParts[0].equals("") & negParts[1].contains("+")) {
                 String[] w = negParts[1].split("[+]");
                 // numero complesso -bj+a
-                if(w[0].contains("j")){
+                if (w[0].contains("j")) {
                     a = Double.parseDouble(w[1]);
-                    b = - Double.parseDouble(w[0].replace("j",""));
-                }
-                // numero complesso -a+bj
-                else {
-                    a = - Double.parseDouble(w[0]);
-                    b = Double.parseDouble(w[1].replace("j",""));
+                    b = -Double.parseDouble(w[0].replace("j", ""));
+                } // numero complesso -a+bj
+                else if (w[1].equals("j")) {
+                    a = -Double.parseDouble(w[0]);
+                    b = 1.0;
+                } else {
+                    a = -Double.parseDouble(w[0]);
+                    b = Double.parseDouble(w[1].replace("j", ""));
                 }
             }
-        }
-        
-        else if(parts.length > 3)
+        } else if (parts.length > 3) {
             throw new InvalidInputException("Scrivere il numero nella rappresentazione cartesiana a+bj");
-        
+        }
+
         this.real = a;
         this.imaginary = b;
     }
-     
-    public double getReal(){
+
+    public double getReal() {
         return real;
     }
 
@@ -178,11 +169,11 @@ public final class Complex implements Serializable  {
     }
 
     public Complex conj() {
-        return new Complex(real, - imaginary);
+        return new Complex(real, -imaginary);
     }
 
     public Complex negate() {
-        return new Complex(- real, - imaginary);
+        return new Complex(-real, -imaginary);
     }
 
     public Complex sum(Complex n) {
@@ -190,8 +181,8 @@ public final class Complex implements Serializable  {
         double b = imaginary;
         double c = n.getReal();
         double d = n.getImaginary();
-        
-        return new Complex(a+c, b+d);
+
+        return new Complex(a + c, b + d);
     }
 
     public Complex sub(Complex n) {
@@ -199,8 +190,8 @@ public final class Complex implements Serializable  {
         double b = imaginary;
         double c = n.getReal();
         double d = n.getImaginary();
-        
-        return new Complex(a-c, b-d);
+
+        return new Complex(a - c, b - d);
     }
 
     public Complex product(Complex n) {
@@ -208,8 +199,8 @@ public final class Complex implements Serializable  {
         double b = imaginary;
         double c = n.getReal();
         double d = n.getImaginary();
-        
-        return new Complex((a*c)-(b*d), (a*d)+(b*c));
+
+        return new Complex((a * c) - (b * d), (a * d) + (b * c));
     }
 
     public Complex division(Complex n) {
@@ -217,22 +208,23 @@ public final class Complex implements Serializable  {
         double b = imaginary;
         double c = n.getReal();
         double d = n.getImaginary();
-        
-        double ac = a*c;
-        double bd = b*d;
-        double bc = b*c;
-        double ad = a*d;
-        
-        double z = abs(c,d)*abs(c,d);
-        
-        if(z == 0)
+
+        double ac = a * c;
+        double bd = b * d;
+        double bc = b * c;
+        double ad = a * d;
+
+        double z = abs(c, d) * abs(c, d);
+
+        if (z == 0) {
             throw new ZeroDivisionException();
-                
-        return new Complex((ac+bd)/(z), (bc-ad)/(z));
+        }
+
+        return new Complex((ac + bd) / (z), (bc - ad) / (z));
     }
-    
+
     public Complex sqrt() {
-        
+
         // Compute with positive values and determine sign at the end
         final double x = Math.abs(real);
         final double y = Math.abs(imaginary);
@@ -246,7 +238,6 @@ public final class Complex implements Serializable  {
         // by Complex.abs() which is a high precision computation with scaling.
         // Worry about overflow if 2 * (|z| + |x|) will overflow.
         // Worry about underflow if |z| or |x| are sub-normal components.
-
         if (inRegion(x, y, Double.MIN_NORMAL, SQRT_SAFE_UPPER)) {
             // No over/underflow
             t = Math.sqrt(2 * (abs(x, y) + x));
@@ -313,39 +304,41 @@ public final class Complex implements Serializable  {
     private static boolean isPosInfinite(double d) {
         return d == Double.POSITIVE_INFINITY;
     }
-    
+
     private static boolean inRegion(double x, double y, double min, double max) {
         return x < max && x > min && y < max && y > min;
     }
-    
+
     private static double abs(double a, double b) {
-        return(Math.sqrt(a*a+b*b));
+        return (Math.sqrt(a * a + b * b));
     }
-    
+
     private String printNumber(double n) {
-        if (n%1.0 == 0)
+        if (n % 1.0 == 0) {
             return String.valueOf((int) n);
+        }
         return String.valueOf((float) n);
     }
-    
+
     public static boolean isComplex(String s) {
-        return s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$") || 
-               s.matches("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$") ||
-               s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?[j])$");
+        return s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
+                || s.matches("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
+                || s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?[j])$");
     }
 
     @Override
     public String toString() {
-        if (imaginary == 0)
+        if (imaginary == 0) {
             return printNumber(real);
-        else if (real == 0)
-            return (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "") + 
-                    (imaginary == -1 ? "-" : "") + "j";
-        else 
-            return printNumber(real) + (imaginary > 0 ? "+" : "") +
-                    (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "") +
-                    (imaginary == -1 ? "-" : "") + (imaginary != 0 ? "j" : "");
-    
+        } else if (real == 0) {
+            return (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "")
+                    + (imaginary == -1 ? "-" : "") + "j";
+        } else {
+            return printNumber(real) + (imaginary > 0 ? "+" : "")
+                    + (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "")
+                    + (imaginary == -1 ? "-" : "") + (imaginary != 0 ? "j" : "");
+        }
+
     }
 
 }
