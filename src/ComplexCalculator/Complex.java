@@ -168,10 +168,6 @@ public final class Complex implements Serializable  {
         return imaginary;
     }
 
-    public Complex conj() {
-        return new Complex(real, -imaginary);
-    }
-
     public Complex negate() {
         return new Complex(-real, -imaginary);
     }
