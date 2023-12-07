@@ -54,6 +54,8 @@ public class ComplexCalculatorController implements Initializable {
     private Button deleteButton;
     @FXML
     private Button enterButton;
+    @FXML
+    private Button numButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -165,5 +167,11 @@ public class ComplexCalculatorController implements Initializable {
                 oblist.setAll(c.getStack());
             }
         }
+    }
+
+    @FXML
+    private void handleFixedButton(ActionEvent event) {
+        Button b = (Button) event.getSource();
+        textInput.setText(b.getText());
     }
 }
