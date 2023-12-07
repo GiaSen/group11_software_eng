@@ -1,6 +1,6 @@
 package ComplexCalculatorException;
 
-public class ZeroDivisionException extends RuntimeException {
+public class ZeroDivisionException extends ComplexCalculatorException {
 
     public ZeroDivisionException() {
     }

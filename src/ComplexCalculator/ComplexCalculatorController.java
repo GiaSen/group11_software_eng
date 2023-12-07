@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package ComplexCalculator;
 
+import ComplexCalculatorException.ComplexCalculatorException;
 import ComplexCalculatorOperation.Calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,11 +22,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 
-/**
- *
- * @author giasen
- */
 public class ComplexCalculatorController implements Initializable {
+
+    private Calculator c = new Calculator();
+    private ObservableList<Complex> oblist = FXCollections.observableArrayList();
+    private ObservableList<Character> combolist = FXCollections.observableArrayList();
 
     @FXML
     private ComboBox<Character> varList;
@@ -37,11 +34,6 @@ public class ComplexCalculatorController implements Initializable {
     private TextField textInput;
     @FXML
     private ListView<Complex> stackView;
-
-    private Calculator c = new Calculator();
-    private ObservableList<Complex> oblist = FXCollections.observableArrayList();
-    private ObservableList<Character> combolist = FXCollections.observableArrayList();
-
     @FXML
     private Button pushVar;
     @FXML
@@ -104,7 +96,7 @@ public class ComplexCalculatorController implements Initializable {
         try {
             c.interpreter(textInput.getText());
 
-        } catch (Exception e) {
+        } catch (ComplexCalculatorException e) {
             System.out.println(e);
         } finally {
             textInput.setText("");
@@ -160,7 +152,7 @@ public class ComplexCalculatorController implements Initializable {
         if (event.getCode().equals(KeyCode.ENTER) && !textInput.getText().equals("")) {
             try {
             c.interpreter(textInput.getText());
-            } catch (Exception e) {
+            } catch (ComplexCalculatorException e) {
                 System.out.println(e);
             } finally {
                 textInput.setText("");

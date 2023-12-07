@@ -1,6 +1,6 @@
 package ComplexCalculatorException;
 
-public class InvalidInputException extends RuntimeException {
+public class InvalidInputException extends ComplexCalculatorException {
 
     public InvalidInputException() {
     }

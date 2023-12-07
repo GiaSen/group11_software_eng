@@ -1,6 +1,6 @@
 package ComplexCalculatorException;
 
-public class NotEnoughDataException extends RuntimeException {
+public class NotEnoughDataException extends ComplexCalculatorException {
 
     public NotEnoughDataException() {
     }

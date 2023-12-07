@@ -1,6 +1,6 @@
 package ComplexCalculatorException;
 
-public class NotEnoughStackElementsException extends RuntimeException {
+public class NotEnoughStackElementsException extends ComplexCalculatorException {
 
     public NotEnoughStackElementsException() {
     }

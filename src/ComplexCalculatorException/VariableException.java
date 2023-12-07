@@ -1,6 +1,6 @@
 package ComplexCalculatorException;
 
-public class VariableException extends RuntimeException {
+public class VariableException extends ComplexCalculatorException {
 
     public VariableException() {
     }
