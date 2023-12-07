@@ -69,7 +69,6 @@ public final class Complex implements Serializable  {
                     // numero complesso -bj
                     if (negParts[1].contains("j")) {
                         String j = negParts[1].replace("j", "");
-                        System.out.println(j);
                         a = 0.0;
                         b = -Double.parseDouble(j);
                     } // numero complesso -a

@@ -62,13 +62,6 @@ public class Calculator {
         }
     }
 
-    public void stampaStack(){
-        System.out.println("Stack:");
-        stack.forEach(e -> {
-            System.out.println(e);
-        });
-    }
-
     public ArrayDeque<Complex> getStack() {
         return stack;
     }
