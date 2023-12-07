@@ -186,7 +186,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDAE5B;" text="⌫" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDAE5B; -fx-opacity: 1;" text="⌫" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="21.0" />
                </font>
@@ -322,7 +322,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#handleEnter" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #B4F56D;" text="⏎" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#handleEnter" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #B4F56D; -fx-opacity: 1;" text="⏎" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
