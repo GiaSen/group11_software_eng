@@ -60,7 +60,7 @@ public class ComplexCalculatorController implements Initializable {
         stackView.setItems(oblist);
         initBinding();
         initVarList();
-       
+
         stackView.setCellFactory(lv -> {
             ListCell<Complex> cell = new ListCell<Complex>() {
                 @Override
@@ -134,6 +134,23 @@ public class ComplexCalculatorController implements Initializable {
         }
         varList.setItems(combolist);
         varList.getSelectionModel().selectFirst();
+        
+        varList.setCellFactory(lv -> {
+            ListCell<Character> cell = new ListCell<Character>() {
+                @Override
+                protected void updateItem(Character c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(c.toString());
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER);
+            return cell;
+        });
+
     }
 
     @FXML
