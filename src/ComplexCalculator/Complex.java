@@ -28,7 +28,11 @@ public final class Complex implements Serializable  {
 
         if (parts.length == 1) {
             // numero complesso bj
-            if (s.contains("j")) {
+            if (s.equals("j")) {
+                a = 0.0;
+                b = 1.0;
+            }
+            else if (s.contains("j")) {
                 s = s.replace("j", "");
                 a = 0.0;
                 b = Double.parseDouble(s);
