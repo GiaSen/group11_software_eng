@@ -30,10 +30,7 @@ public class VariableOperation extends Operation {
         else if (input.contains("-")) {
             subVar(fields[1]);
         }
-        else if (input.equals("varMap")) {
-            printVarMap();
-        }
-        else setVar(input);
+        
     }
     
     public void fromVarToStack(String s) {
@@ -41,10 +38,7 @@ public class VariableOperation extends Operation {
             throw new VariableException();
         stack.push(map.get(s));
     }
-
-    public void setVar(String input) {
-        map.put(input, null);}
-    
+   
     public void fromStackToVar(String s) {
         if(stack.size() < 1)
             throw new NotEnoughStackElementsException();
@@ -52,24 +46,19 @@ public class VariableOperation extends Operation {
     }
 
     public void sumVar(String s) {
-        if(stack.size() < 1)
+        if(!map.containsKey(s))
+            throw new VariableException();
+        else if(stack.size() < 1)
             throw new NotEnoughStackElementsException();
         map.put(s, map.get(s).sum(stack.pop()));
     }
 
     public void subVar(String s) {
-        if(stack.size() < 1)
+        if(!map.containsKey(s))
+            throw new VariableException();
+        else if(stack.size() < 1)
             throw new NotEnoughStackElementsException();
         map.put(s, map.get(s).sub(stack.pop()));
     }
     
-    public void printVarMap(){
-        map.keySet().forEach(l -> {
-            System.out.println(l + ": " + map.get(l));
-        });
-    }
-    
-    public void printVar(String var){
-        System.out.println(var + ": "+ map.get(var));
-    }
 }

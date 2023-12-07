@@ -27,7 +27,7 @@ public class Calculator {
         String[] stackOperations = {"clear", "drop", "dup", "swap", "over"};
         String[] operations = {"+","-","*","/","+-","sqrt"};
         
-        if (input.matches("[<+\\->][a-z]$") | input.equals("varMap")) {
+        if (input.matches("[<+\\->][a-z]$")) {
             for (String op : variableOperations) {
                 if (input.contains(op)) {
                     variable = true;
