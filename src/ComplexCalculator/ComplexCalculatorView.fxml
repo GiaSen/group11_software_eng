@@ -178,7 +178,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="numButton" fx:id="numButton" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDF7E7;" text="9" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button id="numButton" mnemonicParsing="false" onAction="#handleEasyButton" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDF7E7;" text="9" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="27.0" />
                </font>
@@ -322,7 +322,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #B4F56D;" text="⏎" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#handleEnter" prefHeight="60.0" prefWidth="60.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #B4F56D;" text="⏎" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
@@ -330,7 +330,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="textInput" alignment="CENTER_RIGHT" onAction="#handleEnter" prefHeight="60.0" prefWidth="200.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDF7E7;" GridPane.columnIndex="1" GridPane.columnSpan="4">
+            <TextField fx:id="textInput" alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FDF7E7;" GridPane.columnIndex="1" GridPane.columnSpan="4">
                <GridPane.margin>
                   <Insets left="6.8" right="6.0" />
                </GridPane.margin>

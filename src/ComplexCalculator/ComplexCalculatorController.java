@@ -52,6 +52,8 @@ public class ComplexCalculatorController implements Initializable {
     private Button subVar;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button enterButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,6 +124,7 @@ public class ComplexCalculatorController implements Initializable {
         subVar.textProperty().bind(Bindings.concat("-", varList.valueProperty()));
         
         deleteButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
+        enterButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
     }
     
     private void initVarList(){
@@ -135,7 +138,7 @@ public class ComplexCalculatorController implements Initializable {
 
     @FXML
     private void handleEnterGeneral(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER)) {
+        if (event.getCode().equals(KeyCode.ENTER) && !textInput.getText().equals("")) {
             try {
             c.interpreter(textInput.getText());
             } catch (Exception e) {
