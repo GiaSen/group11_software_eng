@@ -20,7 +20,7 @@ public class ArithmeticOperation extends Operation {
             product();
         else if(input.equals("/"))
             division();
-        else if(input.equals("sqrt"))
+        else if(input.equalsIgnoreCase("sqrt"))
             sqrt();
         else if(input.equals("+-"))
             inversion();

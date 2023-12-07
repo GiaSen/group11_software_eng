@@ -37,11 +37,9 @@ public class Calculator {
         
         if (!variable) {
             for (String op : operations){
-                if (input.contains(op) && input.length() == 1)
-                    operation = true;
+               if (input.equalsIgnoreCase(op))
+                     operation = true;
             }
-            if (input.equals("+-")||input.equals("sqrt"))
-                operation = true;
         }
         
         for (String op:stackOperations) {
