@@ -1,6 +1,11 @@
 package ComplexCalculator;
 
 import ComplexCalculatorException.ComplexCalculatorException;
+import ComplexCalculatorException.InvalidInputException;
+import ComplexCalculatorException.NotEnoughDataException;
+import ComplexCalculatorException.NotEnoughStackElementsException;
+import ComplexCalculatorException.VariableException;
+import ComplexCalculatorException.ZeroDivisionException;
 import ComplexCalculatorOperation.Calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +18,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -27,6 +34,7 @@ public class ComplexCalculatorController implements Initializable {
     private Calculator c = new Calculator();
     private ObservableList<Complex> oblist = FXCollections.observableArrayList();
     private ObservableList<Character> combolist = FXCollections.observableArrayList();
+    private Alert alert;
 
     @FXML
     private ComboBox<Character> varList;
@@ -54,7 +62,8 @@ public class ComplexCalculatorController implements Initializable {
         stackView.setItems(oblist);
         initBinding();
         initVarList();
-
+        alert = new Alert(AlertType.ERROR);
+        
         stackView.setCellFactory(lv -> {
             ListCell<Complex> cell = new ListCell<Complex>() {
                 @Override
@@ -95,10 +104,18 @@ public class ComplexCalculatorController implements Initializable {
     private void handleEnter(ActionEvent event) {
         try {
             c.interpreter(textInput.getText());
-
-        } catch (ComplexCalculatorException e) {
-            System.out.println(e);
-        } finally {
+        } catch (InvalidInputException e) {
+            exceptionDialog("Invalid Input Exception thrown", "Bad input insertion!");
+        } catch(NotEnoughDataException e){
+            exceptionDialog("Not Enough Data Exception thrown","There aren't enough data!");
+        } catch(NotEnoughStackElementsException e){
+            exceptionDialog("Not Enough Stack Element Exception thrown","There aren't enough elements in the stack!");
+        } catch(VariableException e){
+            exceptionDialog("Variable Exception thrown","Impossible variable operation inserted!");
+        } catch(ZeroDivisionException e){
+            exceptionDialog("Zero Division Exception thrown","Impossible division with 0!");
+        }
+            finally {
             textInput.setText("");
             oblist.setAll(c.getStack());
         }
@@ -165,5 +182,12 @@ public class ComplexCalculatorController implements Initializable {
     private void handleFixedButton(ActionEvent event) {
         Button b = (Button) event.getSource();
         textInput.setText(b.getText());
+    }
+    
+    private void exceptionDialog(String header, String text){
+        alert.setTitle("Exception thrown");
+        alert.setHeaderText(header);
+        alert.setContentText(text);
+        alert.showAndWait();
     }
 }
