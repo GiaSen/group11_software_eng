@@ -21,6 +21,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Font;
 
 /**
  *
@@ -63,9 +66,9 @@ public class ComplexCalculatorController implements Initializable {
                     super.updateItem(c, empty);
                     if (empty) {
                         setText(null);
-                        setStyle("");
                     } else {
                         setText(c.toString());
+                        setFont(Font.font(15));
                     }
                 }
             };
@@ -93,28 +96,7 @@ public class ComplexCalculatorController implements Initializable {
     }
 
     @FXML
-    private void handleMultiplyAction(ActionEvent event) {
-        textInput.setText(textInput.getText() + "*");
-    }
-
-    @FXML
-    private void handleDivisionAction(ActionEvent event) {
-        textInput.setText(textInput.getText() + "/");
-    }
-
-    @FXML
-    private void handleInvertButton(ActionEvent event) {
-        textInput.setText(textInput.getText() + "+-");
-    }
-
-    @FXML
-    private void handleSqrtAction(ActionEvent event) {
-        textInput.setText(textInput.getText() + "sqrt");
-    }
-
-    @FXML
     private void handleEnter(ActionEvent event) {
-
         try {
             c.interpreter(textInput.getText());
 
@@ -149,5 +131,19 @@ public class ComplexCalculatorController implements Initializable {
         }
         varList.setItems(combolist);
         varList.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    private void handleEnterGeneral(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            try {
+            c.interpreter(textInput.getText());
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                textInput.setText("");
+                oblist.setAll(c.getStack());
+            }
+        }
     }
 }
