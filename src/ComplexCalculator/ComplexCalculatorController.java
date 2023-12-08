@@ -1,6 +1,5 @@
 package ComplexCalculator;
 
-import ComplexCalculatorException.ComplexCalculatorException;
 import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.NotEnoughDataException;
 import ComplexCalculatorException.NotEnoughStackElementsException;
@@ -102,23 +101,7 @@ public class ComplexCalculatorController implements Initializable {
 
     @FXML
     private void handleEnter(ActionEvent event) {
-        try {
-            c.interpreter(textInput.getText());
-        } catch (InvalidInputException e) {
-            exceptionDialog("Invalid Input Exception thrown", "Bad input insertion!");
-        } catch(NotEnoughDataException e){
-            exceptionDialog("Not Enough Data Exception thrown","There aren't enough data!");
-        } catch(NotEnoughStackElementsException e){
-            exceptionDialog("Not Enough Stack Element Exception thrown","There aren't enough elements in the stack!");
-        } catch(VariableException e){
-            exceptionDialog("Variable Exception thrown","Impossible variable operation inserted!");
-        } catch(ZeroDivisionException e){
-            exceptionDialog("Zero Division Exception thrown","Impossible division with 0!");
-        }
-            finally {
-            textInput.setText("");
-            oblist.setAll(c.getStack());
-        }
+        inputSend();
     }
 
     private void initBinding() {
@@ -167,14 +150,7 @@ public class ComplexCalculatorController implements Initializable {
     @FXML
     private void handleEnterGeneral(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER) && !textInput.getText().equals("")) {
-            try {
-            c.interpreter(textInput.getText());
-            } catch (ComplexCalculatorException e) {
-                System.out.println(e);
-            } finally {
-                textInput.setText("");
-                oblist.setAll(c.getStack());
-            }
+            inputSend();
         }
     }
 
@@ -184,6 +160,27 @@ public class ComplexCalculatorController implements Initializable {
         textInput.setText(b.getText());
     }
     
+    private void inputSend(){
+        try {
+            c.interpreter(textInput.getText());
+        } catch (InvalidInputException e) {
+            exceptionDialog("Invalid Input Exception thrown", "Bad input insertion!");
+        } catch(NotEnoughDataException e){
+            exceptionDialog("Not Enough Data Exception thrown","There aren't enough data!");
+        } catch(NotEnoughStackElementsException e){
+            exceptionDialog("Not Enough Stack Element Exception thrown","There aren't enough elements in the stack!");
+        } catch(VariableException e){
+            exceptionDialog("Variable Exception thrown","Impossible variable operation inserted!");
+        } catch(ZeroDivisionException e){
+            exceptionDialog("Zero Division Exception thrown","Impossible division with 0!");
+        }
+            finally {
+            textInput.setText("");
+            oblist.setAll(c.getStack());
+        }
+
+    }
+
     private void exceptionDialog(String header, String text){
         alert.setTitle("Exception thrown");
         alert.setHeaderText(header);
