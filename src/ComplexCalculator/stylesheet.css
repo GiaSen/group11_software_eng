@@ -1,0 +1,117 @@
+.button {
+    -fx-border-insets: -1;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-opacity: 1;
+}
+
+#numButton {
+    -fx-background-color: #FDF7E7;
+}
+
+#numButton:hover {
+    -fx-background-color: #E6E0CF;
+}
+
+#opButton {
+    -fx-background-color: #A2806C;
+}
+
+#opButton:hover {
+    -fx-background-color: #7C604E;
+}
+
+#stackOpButton {
+    -fx-background-color: #FAB49A;
+}
+
+#stackOpButton:hover {
+    -fx-background-color: #E8A38A;
+}
+
+#enterButton {
+    -fx-background-color: #B4F56D;
+}
+
+#enterButton:hover {
+    -fx-background-color: #A1DC61;
+}
+
+#deleteButton {
+    -fx-background-color: #FDAE5B;
+}
+
+#deleteButton:hover {
+    -fx-background-color: #D78B3B;
+}
+
+#ACButton {
+    -fx-background-color: #FDAE5B;
+}
+
+#ACButton:hover {
+    -fx-background-color: #D78B3B;
+}
+
+#varList {
+    -fx-background-color: #7ED7CE;
+    -fx-font-size: 16;
+    -fx-border-insets: -1;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#varList:hover {
+    -fx-background-color: #6FBCB4;
+}
+
+#pushVar {
+    -fx-background-color: #7ED7CE;
+}
+
+#pushVar:hover {
+    -fx-background-color: #6FBCB4;
+}
+
+#popVar {
+    -fx-background-color: #7ED7CE;
+}
+
+#popVar:hover {
+    -fx-background-color: #6FBCB4;
+}
+
+#sumVar {
+    -fx-background-color: #7ED7CE;
+}
+
+#sumVar:hover {
+    -fx-background-color: #6FBCB4;
+}
+
+#subVar {
+    -fx-background-color: #7ED7CE;
+}
+
+#subVar:hover {
+    -fx-background-color: #6FBCB4;
+}
+
+#stackView {
+    -fx-border-insets: -1;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #FDF7E7;
+}
+
+#stackView .list-cell:even {
+    -fx-background-color: #FDF7E7;
+}
+
+#stackView .list-cell:odd {
+    -fx-background-color:  #FBEDCA;
+}
+
+#stackView .list-cell:selected {
+    -fx-text-fill: black;
+}

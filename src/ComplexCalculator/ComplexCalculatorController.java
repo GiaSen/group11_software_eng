@@ -140,7 +140,7 @@ public class ComplexCalculatorController implements Initializable {
         varList.setItems(combolist);
         varList.getSelectionModel().selectFirst();
         
-        varList.setCellFactory(lv -> {
+        varList.setCellFactory(lv -> {      
             ListCell<Character> cell = new ListCell<Character>() {
                 @Override
                 protected void updateItem(Character c, boolean empty) {
