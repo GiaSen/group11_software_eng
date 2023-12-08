@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#handleEnterGeneral" prefHeight="371.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ComplexCalculator.ComplexCalculatorController">
+<AnchorPane id="AnchorPane" onKeyPressed="#handleEnterGeneral" prefHeight="371.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ComplexCalculator.ComplexCalculatorController">
    <children>
       <GridPane layoutX="130.0" layoutY="126.0" prefHeight="375.0" prefWidth="750.0" style="-fx-background-color: #FBEDCA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -37,7 +43,7 @@
          <children>
             <Button fx:id="pushVar" mnemonicParsing="false" onAction="#handleFixedButton" prefHeight="60.0" prefWidth="75.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&gt;x" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
-                  <Font size="26.0" />
+                  <Font size="25.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -51,7 +57,7 @@
             </Button>
             <Button fx:id="popVar" mnemonicParsing="false" onAction="#handleFixedButton" prefHeight="60.0" prefWidth="75.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="&lt;x" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
-                  <Font size="26.0" />
+                  <Font size="25.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -65,7 +71,7 @@
             </Button>
             <Button fx:id="sumVar" mnemonicParsing="false" onAction="#handleFixedButton" prefHeight="60.0" prefWidth="75.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="+x" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
-                  <Font size="26.0" />
+                  <Font size="25.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -79,7 +85,7 @@
             </Button>
             <Button fx:id="subVar" mnemonicParsing="false" onAction="#handleFixedButton" prefHeight="60.0" prefWidth="75.0" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE;" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
-                  <Font size="26.0" />
+                  <Font size="25.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -91,7 +97,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ComboBox fx:id="varList" prefHeight="60.0" prefWidth="75.0" promptText="x" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE; -fx-font-size: 18; -fx-font-weight: bold;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <ComboBox fx:id="varList" prefHeight="60.0" prefWidth="75.0" promptText="x" style="-fx-border-insets: -1; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7ED7CE; -fx-font-size: 16; -fx-font-weight: bold;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
