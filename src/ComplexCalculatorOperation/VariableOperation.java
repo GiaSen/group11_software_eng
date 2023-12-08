@@ -98,5 +98,9 @@ public class VariableOperation extends Operation {
         }
         map.put(s, map.get(s).sub(stack.pop()));
     }
+    
+    public HashMap<String, Complex> getMap() {
+        return map;
+    }
 
 }

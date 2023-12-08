@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.*;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ public class Calculator {
     private final ArrayDeque<Complex> stack;
     private final Operation arithmeticOperation;
     private final Operation stackOperation;
+
     private final Operation variableOperation;
 
     /**
@@ -58,5 +60,11 @@ public class Calculator {
     public ArrayDeque<Complex> getStack() {
         return stack;
     }
+    
+    public HashMap<String, Complex> getMap() {
+        VariableOperation vop= (VariableOperation) variableOperation;
+        return vop.getMap();
+    }
+    
 
 }

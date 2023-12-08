@@ -7,6 +7,7 @@ import ComplexCalculatorException.VariableException;
 import ComplexCalculatorException.ZeroDivisionException;
 import ComplexCalculatorOperation.Calculator;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
@@ -35,12 +36,13 @@ import javafx.scene.text.Font;
 public class ComplexCalculatorController implements Initializable {
 
     private Calculator c = new Calculator();
+    private HashMap<String, Complex> map = c.getMap();
     private ObservableList<Complex> oblist = FXCollections.observableArrayList();
-    private ObservableList<Character> combolist = FXCollections.observableArrayList();
+    private ObservableList<String> combolist = FXCollections.observableArrayList();
     private Alert alert;
 
     @FXML
-    private ComboBox<Character> varList;
+    private ComboBox<String> varList;
     @FXML
     private TextField textInput;
     @FXML
@@ -143,24 +145,24 @@ public class ComplexCalculatorController implements Initializable {
     private void initVarList() {
         varList.getSelectionModel().select('a');
         for (Character i = 'a'; i <= 'z'; i++) {
-            combolist.add(i);
+            combolist.add(i.toString());
         }
         varList.setItems(combolist);
         varList.getSelectionModel().selectFirst();
 
         varList.setCellFactory(lv -> {
-            ListCell<Character> cell = new ListCell<Character>() {
+            ListCell<String> cell = new ListCell<String>() {
                 @Override
-                protected void updateItem(Character c, boolean empty) {
+                protected void updateItem(String c, boolean empty) {
                     super.updateItem(c, empty);
                     if (empty) {
                         setText(null);
                     } else {
-                        setText(c.toString());
+                        setText(c);
                     }
                 }
             };
-            cell.setAlignment(Pos.CENTER);
+            cell.setAlignment(Pos.CENTER_LEFT);
             return cell;
         });
 
@@ -211,8 +213,27 @@ public class ComplexCalculatorController implements Initializable {
         } finally {
             textInput.setText("");
             oblist.setAll(c.getStack());
+            updateVariableValue();
         }
 
+    }
+    
+    private void updateVariableValue() {
+        varList.setCellFactory(lv -> {
+            ListCell<String> cell = new ListCell<String>() {
+                @Override
+                protected void updateItem(String c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (map.get(c)==null) {
+                        setText(c);
+                    } else {
+                        setText(c+" = "+map.get(c));
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER_LEFT);
+            return cell;
+        });
     }
 
     /**
