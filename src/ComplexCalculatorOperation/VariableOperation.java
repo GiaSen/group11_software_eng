@@ -9,7 +9,7 @@ import ComplexCalculatorException.VariableException;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class VariableOperation extends Operation {
     private HashMap<String,Complex> map;

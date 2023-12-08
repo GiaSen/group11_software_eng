@@ -30,7 +30,7 @@ import javafx.scene.text.Font;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class ComplexCalculatorController implements Initializable {
 

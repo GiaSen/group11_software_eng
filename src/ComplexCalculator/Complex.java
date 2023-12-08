@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public final class Complex implements Serializable  {
     

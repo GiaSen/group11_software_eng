@@ -6,7 +6,7 @@ import ComplexCalculator.Complex;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class ArithmeticOperation extends Operation {
 

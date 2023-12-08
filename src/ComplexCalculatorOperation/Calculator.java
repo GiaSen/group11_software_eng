@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class Calculator {
     private final ArrayDeque<Complex> stack;

@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public abstract class Operation {
 

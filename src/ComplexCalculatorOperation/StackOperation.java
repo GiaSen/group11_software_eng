@@ -6,7 +6,7 @@ import ComplexCalculatorException.NotEnoughStackElementsException;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class StackOperation extends Operation {
 

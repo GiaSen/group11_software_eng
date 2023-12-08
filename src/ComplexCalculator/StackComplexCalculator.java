@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author giasen
+ * @author group11
  */
 public class StackComplexCalculator extends Application {
     
