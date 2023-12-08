@@ -2,7 +2,7 @@ package ComplexCalculatorException;
 
 /**
  *
- * 
+ *
  */
 public class ComplexCalculatorException extends RuntimeException {
 

@@ -13,15 +13,15 @@ import javafx.stage.Stage;
  * @author group11
  */
 public class StackComplexCalculator extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("ComplexCalculatorView.fxml"));
-        
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         stage.setResizable(false);
-        
+
         stage.setTitle("Scientific Calculator Beta");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
 
@@ -35,5 +35,5 @@ public class StackComplexCalculator extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

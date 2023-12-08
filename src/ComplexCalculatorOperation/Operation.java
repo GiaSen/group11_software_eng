@@ -13,12 +13,12 @@ public abstract class Operation {
      *
      */
     protected final ArrayDeque<Complex> stack;
-    
+
     /**
      *
      * @param stack
      */
-    public Operation(ArrayDeque stack){
+    public Operation(ArrayDeque stack) {
         this.stack = stack;
     }
 

@@ -18,5 +18,5 @@ public class InvalidInputException extends ComplexCalculatorException {
     public InvalidInputException(String string) {
         super(string);
     }
-    
+
 }

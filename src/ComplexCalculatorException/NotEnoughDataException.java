@@ -1,8 +1,8 @@
 package ComplexCalculatorException;
 
 /**
- * Exception thrown when user asks for an operation that requires more
- * operands than are available.
+ * Exception thrown when user asks for an operation that requires more operands
+ * than are available.
  */
 public class NotEnoughDataException extends ComplexCalculatorException {
 
@@ -19,5 +19,5 @@ public class NotEnoughDataException extends ComplexCalculatorException {
     public NotEnoughDataException(String string) {
         super(string);
     }
-    
+
 }

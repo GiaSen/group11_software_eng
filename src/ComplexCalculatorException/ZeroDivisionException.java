@@ -18,5 +18,5 @@ public class ZeroDivisionException extends ComplexCalculatorException {
     public ZeroDivisionException(String string) {
         super(string);
     }
-    
+
 }

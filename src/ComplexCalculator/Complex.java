@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
  *
  * @author group11
  */
-public final class Complex implements Serializable  {
-    
+public final class Complex implements Serializable {
+
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
     private static final double ONE_OVER_ROOT2 = 0.7071067811865476;
 
@@ -20,6 +20,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Initializes a new Complex number given its real and imaginary part.
+     *
      * @param real
      * @param imaginary
      */
@@ -30,51 +31,53 @@ public final class Complex implements Serializable  {
 
     /**
      * Initializes a new Complex number given a String.
+     *
      * @param s
      */
     public Complex(String s) {
-      String numberNoWhiteSpace = s.replaceAll("\\s","");
+        String numberNoWhiteSpace = s.replaceAll("\\s", "");
 
-      // Matches complex number with BOTH real AND imaginary parts.  
-      Pattern patternA = Pattern.compile("^([+-]?[0-9]+\\.?[0-9]*)([-+]+[0-9]*\\.?[0-9]*)[j$]+");
+        // Matches complex number with BOTH real AND imaginary parts.  
+        Pattern patternA = Pattern.compile("^([+-]?[0-9]+\\.?[0-9]*)([-+]+[0-9]*\\.?[0-9]*)[j$]+");
 
-      // Matches ONLY real number.
-      Pattern patternB = Pattern.compile("^([+-]?[0-9]*\\.?[0-9]*)$");
+        // Matches ONLY real number.
+        Pattern patternB = Pattern.compile("^([+-]?[0-9]*\\.?[0-9]*)$");
 
-      // Matches ONLY imaginary number.
-      Pattern patternC = Pattern.compile("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)[j]+$");
-      Pattern patternD = Pattern.compile("^([+-]?\\d+(\\.\\d+)?)([+-]j)$");
-      
-      Matcher matcherA = patternA.matcher(numberNoWhiteSpace);
-      Matcher matcherB = patternB.matcher(numberNoWhiteSpace);
-      Matcher matcherC = patternC.matcher(numberNoWhiteSpace);
-      Matcher matcherD = patternD.matcher(numberNoWhiteSpace);
+        // Matches ONLY imaginary number.
+        Pattern patternC = Pattern.compile("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)[j]+$");
+        Pattern patternD = Pattern.compile("^([+-]?\\d+(\\.\\d+)?)([+-]j)$");
 
-      if (matcherA.find()) {
-          real = Double.parseDouble(matcherA.group(1));
-          if(matcherA.group(2).equals("+"))
-              imaginary = 1.0;
-          else if(matcherA.group(2).equals("-"))
-              imaginary = -1.0;
-          else
-            imaginary = Double.parseDouble(matcherA.group(2));
-      } else if (matcherB.find()) {
-          real = Double.parseDouble(matcherB.group(1));
-          imaginary = 0.0;
-      } else if (matcherC.find()) {
-          if (s.equals("j")){
-        real = 0.0;
-        imaginary = 1.0;
-        } else{
-            real = 0.0;
-            imaginary = Double.parseDouble(matcherC.group(1));
-          }
-        } else if (matcherD.find()){
-          real = Double.parseDouble(matcherD.group(1));
-          imaginary = matcherD.group(3).equals("+j") ? 1.0 : -1.0;
-    } else {
-          throw new InvalidInputException();
-      }
+        Matcher matcherA = patternA.matcher(numberNoWhiteSpace);
+        Matcher matcherB = patternB.matcher(numberNoWhiteSpace);
+        Matcher matcherC = patternC.matcher(numberNoWhiteSpace);
+        Matcher matcherD = patternD.matcher(numberNoWhiteSpace);
+
+        if (matcherA.find()) {
+            real = Double.parseDouble(matcherA.group(1));
+            if (matcherA.group(2).equals("+")) {
+                imaginary = 1.0;
+            } else if (matcherA.group(2).equals("-")) {
+                imaginary = -1.0;
+            } else {
+                imaginary = Double.parseDouble(matcherA.group(2));
+            }
+        } else if (matcherB.find()) {
+            real = Double.parseDouble(matcherB.group(1));
+            imaginary = 0.0;
+        } else if (matcherC.find()) {
+            if (s.equals("j")) {
+                real = 0.0;
+                imaginary = 1.0;
+            } else {
+                real = 0.0;
+                imaginary = Double.parseDouble(matcherC.group(1));
+            }
+        } else if (matcherD.find()) {
+            real = Double.parseDouble(matcherD.group(1));
+            imaginary = matcherD.group(3).equals("+j") ? 1.0 : -1.0;
+        } else {
+            throw new InvalidInputException();
+        }
 
     }
 
@@ -96,6 +99,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the negate of a Complex number.
+     *
      * @return Complex
      */
     public Complex negate() {
@@ -104,6 +108,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the sum of 2 Complex numbers.
+     *
      * @param n
      * @return Complex
      */
@@ -118,6 +123,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the subtraction of 2 Complex numbers.
+     *
      * @param n
      * @return Complex
      */
@@ -132,6 +138,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the product of 2 Complex numbers.
+     *
      * @param n
      * @return Complex
      */
@@ -146,6 +153,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the division of 2 Complex numbers.
+     *
      * @param n
      * @return Complex
      */
@@ -171,6 +179,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the square root of a Complex number.
+     *
      * @return Complex
      */
     public Complex sqrt() {
@@ -250,18 +259,20 @@ public final class Complex implements Serializable  {
         }
         return new Complex(y / t, Math.copySign(t / 2, imaginary));
     }
-    
+
     /**
      * Record whether the Complex number is positive infinite.
+     *
      * @param d
      * @return boolean
      */
     private static boolean isPosInfinite(double d) {
         return d == Double.POSITIVE_INFINITY;
     }
-    
+
     /**
      * Record whether an operation will record an overflow.
+     *
      * @param x
      * @param y
      * @param min
@@ -274,6 +285,7 @@ public final class Complex implements Serializable  {
 
     /**
      * Returns the absolute of 2 double numbers.
+     *
      * @param a
      * @param b
      * @return double
@@ -283,20 +295,22 @@ public final class Complex implements Serializable  {
     }
 
     /**
-     * If the parameter is an integer it prints the number as an integer;
-     * If the parameter is a double it prints the number as a float.
+     * If the parameter is an integer until +-10^7 it prints the number as an
+     * integer; If the parameter is a double it prints the number as a double.
+     *
      * @param n
      * @return String
      */
     private String printNumber(double n) {
-        if (n % 1.0 == 0) {
+        if (n % 1.0 == 0 && n < 10000000 && n > -10000000) {
             return String.valueOf((int) n);
         }
-        return String.valueOf((float) n);
+        return String.valueOf((double) n);
     }
 
     /**
      * States if the input String is a Complex number.
+     *
      * @param s
      * @return boolean
      */
@@ -305,7 +319,7 @@ public final class Complex implements Serializable  {
                 || s.matches("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
                 || s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?[j])$");
     }
-    
+
     @Override
     public String toString() {
         if (imaginary == 0) {
