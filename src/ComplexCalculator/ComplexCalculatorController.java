@@ -61,25 +61,8 @@ public class ComplexCalculatorController implements Initializable {
         stackView.setItems(oblist);
         initBinding();
         initVarList();
-        alert = new Alert(AlertType.ERROR);
-        
-        stackView.setCellFactory(lv -> {
-            ListCell<Complex> cell = new ListCell<Complex>() {
-                @Override
-                protected void updateItem(Complex c, boolean empty) {
-                    super.updateItem(c, empty);
-                    if (empty) {
-                        setText(null);
-                    } else {
-                        setText(c.toString());
-                        setFont(Font.font(15));
-                    }
-                }
-            };
-            cell.setAlignment(Pos.CENTER);
-
-            return cell;
-        });
+        initStackList();
+        alert = new Alert(AlertType.ERROR);        
     }
 
     @FXML
@@ -186,5 +169,26 @@ public class ComplexCalculatorController implements Initializable {
         alert.setHeaderText(header);
         alert.setContentText(text);
         alert.showAndWait();
+    }
+
+    private void initStackList() {
+        stackView.setCellFactory(lv -> {
+            ListCell<Complex> cell = new ListCell<Complex>() {
+                @Override
+                protected void updateItem(Complex c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(c.toString());
+                        setFont(Font.font(15));
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER);
+
+            return cell;
+        });
+
     }
 }
