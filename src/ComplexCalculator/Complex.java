@@ -305,7 +305,10 @@ public final class Complex implements Serializable {
         if (n % 1.0 == 0 && n < 10000000 && n > -10000000) {
             return String.valueOf((int) n);
         }
-        return String.valueOf((double) n);
+        else if (n < 10000000 && n > -10000000) {
+            return String.format("%.3f", n);
+        }
+        return String.valueOf(n);
     }
 
     /**
