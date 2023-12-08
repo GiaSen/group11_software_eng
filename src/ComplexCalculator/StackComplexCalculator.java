@@ -5,6 +5,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -19,6 +20,9 @@ public class StackComplexCalculator extends Application {
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
+        
+        stage.setTitle("Scientific Calculator Beta");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
 
         stage.setScene(scene);
         stage.show();
