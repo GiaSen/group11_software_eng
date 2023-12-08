@@ -3,6 +3,8 @@ package ComplexCalculatorOperation;
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Calculator {
     private final ArrayDeque<Complex> stack;
@@ -18,42 +20,20 @@ public class Calculator {
         variableOperation = new VariableOperation(stack);
     }
     
-    public void interpreter(String input){
-        boolean operation = false;
-        boolean stackoperation = false;
-        boolean variable = false;
-        
-        String[] variableOperations = {"+","-","<",">","varMap"};
-        String[] stackOperations = {"clear", "drop", "dup", "swap", "over"};
-        String[] operations = {"+","-","*","/","+-","sqrt"};
-        
-        if (input.matches("[<+\\->][a-z]$")) {
-            for (String op : variableOperations) {
-                if (input.contains(op)) {
-                    variable = true;
-                }
-            }
-        }
-        
-        if (!variable) {
-            for (String op : operations){
-               if (input.equalsIgnoreCase(op))
-                     operation = true;
-            }
-        }
-        
-        for (String op:stackOperations) {
-            if (input.equalsIgnoreCase(op)) {
-                stackoperation = true;
-            }
-        }
-        
-        if (variable)
+    public void interpreter(String input){       
+        //List<String> variableOperations = Arrays.asList("+","-","<",">");
+        List<String> stackOperations = Arrays.asList("clear", "drop", "dup", "swap", "over");
+        List<String> operations = Arrays.asList("+","-","*","/","+-","sqrt");
+       
+        if (input.matches("[<+\\->][a-z]$"))
             variableOperation.operationInterpreter(input);
-        else if (operation)
+        
+        else if(operations.contains(input.toLowerCase()))
             arithmeticOperation.operationInterpreter(input);
-        else if (stackoperation)
+
+        else if(stackOperations.contains(input.toLowerCase()))
             stackOperation.operationInterpreter(input);
+
         else if(Complex.isComplex(input)){
             stack.push(new Complex(input));
         }
