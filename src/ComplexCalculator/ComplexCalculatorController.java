@@ -149,13 +149,13 @@ public class ComplexCalculatorController implements Initializable {
         } catch (InvalidInputException e) {
             exceptionDialog("Invalid Input Exception thrown", "Bad input insertion!");
         } catch(NotEnoughDataException e){
-            exceptionDialog("Not Enough Data Exception thrown","There aren't enough data!");
+            exceptionDialog("Not Enough Data Exception thrown","There isn't enough data!");
         } catch(NotEnoughStackElementsException e){
             exceptionDialog("Not Enough Stack Element Exception thrown","There aren't enough elements in the stack!");
         } catch(VariableException e){
             exceptionDialog("Variable Exception thrown","Impossible variable operation inserted!");
         } catch(ZeroDivisionException e){
-            exceptionDialog("Zero Division Exception thrown","Impossible division with 0!");
+            exceptionDialog("Zero Division Exception thrown","Impossible division by 0!");
         }
             finally {
             textInput.setText("");
