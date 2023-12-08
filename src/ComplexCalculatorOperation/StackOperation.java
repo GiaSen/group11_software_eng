@@ -4,12 +4,25 @@ import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.NotEnoughStackElementsException;
 
+/**
+ *
+ * @author vince
+ */
 public class StackOperation extends Operation {
 
+    /**
+     *
+     * @param stack
+     */
     public StackOperation (ArrayDeque stack) {
         super(stack);
     }
 
+    /**
+     * Calls the function suited to the type of Stack operation
+     * entered as input.
+     * @param input
+     */
     @Override
     public void operationInterpreter(String input){
         if(input.equalsIgnoreCase("clear"))
@@ -24,22 +37,34 @@ public class StackOperation extends Operation {
             over();
     }
     
+    /**
+     * Removes all elements from the Stack.
+     */
     public void clear(){
         stack.clear();
     }
 
+    /**
+     * Removes the first element from the Stack.
+     */
     public void drop() {
         if(stack.size() < 1)
             throw new NotEnoughStackElementsException();
         stack.removeFirst();
     }
     
+    /**
+     * Copies the top element of the Stack and pushes it on top of it.
+     */
     public void dup() {
         if(stack.size() < 1)
             throw new NotEnoughStackElementsException();
         stack.push(stack.peek());
     }
     
+    /**
+     * Swaps the first 2 elements of the Stack.
+     */
     public void swap() {
         if(stack.size() < 2)
             throw new NotEnoughStackElementsException();
@@ -49,6 +74,9 @@ public class StackOperation extends Operation {
         stack.push(n2);
     }
     
+    /**
+     * Copies the second Stack element and pushes it on top of the Stack.
+     */
     public void over() {
         if(stack.size() < 2)
             throw new NotEnoughStackElementsException();

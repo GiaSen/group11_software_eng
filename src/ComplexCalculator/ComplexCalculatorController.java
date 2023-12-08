@@ -28,6 +28,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 
+/**
+ *
+ * @author vince
+ */
 public class ComplexCalculatorController implements Initializable {
 
     private Calculator c = new Calculator();
@@ -56,6 +60,11 @@ public class ComplexCalculatorController implements Initializable {
     @FXML
     private Button numButton;
 
+    /**
+     * Initializes the GUI elements.
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         stackView.setItems(oblist);
@@ -65,23 +74,39 @@ public class ComplexCalculatorController implements Initializable {
         alert = new Alert(AlertType.ERROR);        
     }
 
+    /**
+     * Determines the behaviour of the calculator when a button is pressed.
+     * @param event
+     */
     @FXML
     private void handleEasyButton(ActionEvent event) {
         Button b = (Button) event.getSource();
         textInput.setText(textInput.getText() + b.getText());
     }
 
+    /**
+     * Determines the behaviour of the calculator when the delete all button (AC) is pressed.
+     * @param event
+     */
     @FXML
     private void handleDeleteAllAction(ActionEvent event) {
         textInput.setText("");
     }
 
+    /**
+     * Determines the behaviour of the calculator when the delete button (⌫) is pressed.
+     * @param event
+     */
     @FXML
     private void handleDeleteAction(ActionEvent event) {
         String s = textInput.getText().substring(0, textInput.getText().length() - 1);
         textInput.setText(s);
     }
 
+    /**
+     * Determines the behaviour of the calculator when the Enter button (⏎) is pressed.
+     * @param event
+     */
     @FXML
     private void handleEnter(ActionEvent event) {
         inputSend();
@@ -104,6 +129,9 @@ public class ComplexCalculatorController implements Initializable {
         enterButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
     }
     
+    /**
+     * Initializes the variable list with 26 letters (from a to z).
+     */
     private void initVarList(){
         varList.getSelectionModel().select('a');
         for(Character i = 'a'; i <= 'z'; i++){
@@ -130,6 +158,10 @@ public class ComplexCalculatorController implements Initializable {
 
     }
 
+    /**
+     * Determines the behaviour of the calculator when the Enter button is pressed from the keyboard.
+     * @param event
+     */
     @FXML
     private void handleEnterGeneral(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER) && !textInput.getText().equals("")) {
@@ -137,12 +169,20 @@ public class ComplexCalculatorController implements Initializable {
         }
     }
 
+    /**
+     * Determines the behaviour of the calculator when a variableOp button or a stackOp button is pressed.
+     * @param event
+     */
     @FXML
     private void handleFixedButton(ActionEvent event) {
         Button b = (Button) event.getSource();
         textInput.setText(b.getText());
     }
     
+    /**
+     * Sends the input to the Calculator interpreter and manages eventual 
+     * Exceptions thrown showing an exceptionDialog with its relative message.
+     */
     private void inputSend(){
         try {
             c.interpreter(textInput.getText());
@@ -164,6 +204,11 @@ public class ComplexCalculatorController implements Initializable {
 
     }
 
+    /**
+     * Sets Title,HeaderText,ContentText for the alert window.
+     * @param header
+     * @param text
+     */
     private void exceptionDialog(String header, String text){
         alert.setTitle("Exception thrown");
         alert.setHeaderText(header);
@@ -171,6 +216,9 @@ public class ComplexCalculatorController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Initializes the Stack list.
+     */
     private void initStackList() {
         stackView.setCellFactory(lv -> {
             ListCell<Complex> cell = new ListCell<Complex>() {

@@ -6,13 +6,19 @@ import ComplexCalculatorException.*;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ *
+ * @author vince
+ */
 public class Calculator {
     private final ArrayDeque<Complex> stack;
     private final Operation arithmeticOperation;
     private final Operation stackOperation;
     private final Operation variableOperation;
     
-    
+    /**
+     * Initializes the Stack and the Constructors of all operation types.
+     */
     public Calculator(){
         stack = new ArrayDeque<>();
         arithmeticOperation = new ArithmeticOperation(stack);
@@ -20,6 +26,11 @@ public class Calculator {
         variableOperation = new VariableOperation(stack);
     }
     
+    /**
+     * States what type of input has been entered and calls the relative function
+     * to elaborate the operation.
+     * @param input
+     */
     public void interpreter(String input){       
         //List<String> variableOperations = Arrays.asList("+","-","<",">");
         List<String> stackOperations = Arrays.asList("clear", "drop", "dup", "swap", "over");
@@ -42,6 +53,10 @@ public class Calculator {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayDeque<Complex> getStack() {
         return stack;
     }

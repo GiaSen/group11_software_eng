@@ -4,6 +4,10 @@ import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.ZeroDivisionException;
 import java.io.Serializable;
 
+/**
+ *
+ * @author vince
+ */
 public final class Complex implements Serializable  {
     
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
@@ -12,11 +16,20 @@ public final class Complex implements Serializable  {
     private final double imaginary;
     private final double real;
 
+    /**
+     * Initializes a new Complex number given its real and imaginary part.
+     * @param real
+     * @param imaginary
+     */
     public Complex(double real, double imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
 
+    /**
+     * Initializes a new Complex number given a String.
+     * @param s
+     */
     public Complex(String s) {
         double a = 0.0;
         double b = 0.0;
@@ -163,18 +176,35 @@ public final class Complex implements Serializable  {
         this.imaginary = b;
     }
 
+    /**
+     *
+     * @return double
+     */
     public double getReal() {
         return real;
     }
 
+    /**
+     *
+     * @return double
+     */
     public double getImaginary() {
         return imaginary;
     }
 
+    /**
+     * Returns the negate of a Complex number.
+     * @return Complex
+     */
     public Complex negate() {
         return new Complex(-real, -imaginary);
     }
 
+    /**
+     * Returns the sum of 2 Complex numbers.
+     * @param n
+     * @return Complex
+     */
     public Complex sum(Complex n) {
         double a = real;
         double b = imaginary;
@@ -184,6 +214,11 @@ public final class Complex implements Serializable  {
         return new Complex(a + c, b + d);
     }
 
+    /**
+     * Returns the subtraction of 2 Complex numbers.
+     * @param n
+     * @return Complex
+     */
     public Complex sub(Complex n) {
         double a = real;
         double b = imaginary;
@@ -193,6 +228,11 @@ public final class Complex implements Serializable  {
         return new Complex(a - c, b - d);
     }
 
+    /**
+     * Returns the product of 2 Complex numbers.
+     * @param n
+     * @return Complex
+     */
     public Complex product(Complex n) {
         double a = real;
         double b = imaginary;
@@ -202,6 +242,11 @@ public final class Complex implements Serializable  {
         return new Complex((a * c) - (b * d), (a * d) + (b * c));
     }
 
+    /**
+     * Returns the division of 2 Complex numbers.
+     * @param n
+     * @return Complex
+     */
     public Complex division(Complex n) {
         double a = real;
         double b = imaginary;
@@ -222,6 +267,10 @@ public final class Complex implements Serializable  {
         return new Complex((ac + bd) / (z), (bc - ad) / (z));
     }
 
+    /**
+     * Returns the square root of a Complex number.
+     * @return Complex
+     */
     public Complex sqrt() {
 
         // Compute with positive values and determine sign at the end
@@ -299,19 +348,44 @@ public final class Complex implements Serializable  {
         }
         return new Complex(y / t, Math.copySign(t / 2, imaginary));
     }
-
+    
+    /**
+     * Record whether the Complex number is positive infinite.
+     * @param d
+     * @return boolean
+     */
     private static boolean isPosInfinite(double d) {
         return d == Double.POSITIVE_INFINITY;
     }
-
+    
+    /**
+     * Record whether an operation will record an overflow.
+     * @param x
+     * @param y
+     * @param min
+     * @param max
+     * @return boolean
+     */
     private static boolean inRegion(double x, double y, double min, double max) {
         return x < max && x > min && y < max && y > min;
     }
 
+    /**
+     * Returns the absolute of 2 double numbers.
+     * @param a
+     * @param b
+     * @return double
+     */
     private static double abs(double a, double b) {
         return (Math.sqrt(a * a + b * b));
     }
 
+    /**
+     * If the parameter is an integer it prints the number as an integer;
+     * If the parameter is a double it prints the number as a float.
+     * @param n
+     * @return String
+     */
     private String printNumber(double n) {
         if (n % 1.0 == 0) {
             return String.valueOf((int) n);
@@ -319,6 +393,11 @@ public final class Complex implements Serializable  {
         return String.valueOf((float) n);
     }
 
+    /**
+     * States if the input String is a Complex number.
+     * @param s
+     * @return boolean
+     */
     public static boolean isComplex(String s) {
         return s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
                 || s.matches("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
