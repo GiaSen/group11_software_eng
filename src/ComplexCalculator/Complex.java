@@ -18,7 +18,9 @@ public final class Complex implements Serializable {
 
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
     private static final double ONE_OVER_ROOT2 = 0.7071067811865476;
-
+    private static final String complexRegex = "^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)?[j]$";
+    private static final String realRegex = "^([+-]?[0-9]*\\.?[0-9]*)$";
+    private static final String imaginaryRegex = "^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)[j]+$";
     private double imaginary;
     private double real;
 
@@ -42,19 +44,17 @@ public final class Complex implements Serializable {
         String numberNoWhiteSpace = s.replaceAll("\\s", "");
 
         // Matches complex number with BOTH real AND imaginary parts.  
-        Pattern patternA = Pattern.compile("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)?[j]$");
+        Pattern patternA = Pattern.compile(complexRegex);
 
         // Matches ONLY real number.
-        Pattern patternB = Pattern.compile("^([+-]?[0-9]*\\.?[0-9]*)$");
+        Pattern patternB = Pattern.compile(realRegex);
 
         // Matches ONLY imaginary number.
-        Pattern patternC = Pattern.compile("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)[j]+$");
-        Pattern patternD = Pattern.compile("^([+-]?\\d+(\\.\\d+)?)([+-]j)$");
+        Pattern patternC = Pattern.compile(imaginaryRegex);
 
         Matcher matcherA = patternA.matcher(numberNoWhiteSpace);
         Matcher matcherB = patternB.matcher(numberNoWhiteSpace);
         Matcher matcherC = patternC.matcher(numberNoWhiteSpace);
-        Matcher matcherD = patternD.matcher(numberNoWhiteSpace);
 
         if (matcherA.find()) {
             real = Double.parseDouble(matcherA.group(1));
@@ -76,9 +76,6 @@ public final class Complex implements Serializable {
                 real = 0.0;
                 imaginary = Double.parseDouble(matcherC.group(1));
             }
-        } else if (matcherD.find()) {
-            real = Double.parseDouble(matcherD.group(1));
-            imaginary = matcherD.group(3).equals("+j") ? 1.0 : -1.0;
         } else {
             throw new InvalidInputException();
         }
@@ -326,9 +323,9 @@ public final class Complex implements Serializable {
      * @return boolean
      */
     public static boolean isComplex(String s) {
-        return s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
-                || s.matches("^(?=[j.\\d+-])([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?[j])?$")
-                || s.matches("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?[j])$");
+        return s.matches(complexRegex)
+                || s.matches(realRegex)
+                || s.matches(imaginaryRegex);
     }
 
     @Override
