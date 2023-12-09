@@ -7,7 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * The Complex class represents complex numbers given their imaginary and real
+ * part;
+ * The class provides all methods for operations such as sum, subtraction,
+ * product and division.
  * @author group11
  */
 public final class Complex implements Serializable {
@@ -304,8 +307,7 @@ public final class Complex implements Serializable {
     private String printNumber(double n) {
         if (n % 1.0 == 0 && n < 10000000 && n > -10000000) {
             return String.valueOf((int) n);
-        }
-        else if (n < 10000000 && n > -10000000) {
+        } else if (n < 10000000 && n > -10000000) {
             return String.format("%.3f", n);
         }
         return String.valueOf(n);
