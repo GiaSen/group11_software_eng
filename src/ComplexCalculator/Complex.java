@@ -312,7 +312,7 @@ public final class Complex implements Serializable {
             return String.valueOf((int) n);
         } //if the number has a decimal part and is still included in the range that the "Double" class prints without simplifying it gets printed as a double with a maximum of three decimal digits.
         else if (n < 10000000 && n > -10000000) {
-            DecimalFormat df = new DecimalFormat("#.###");
+            DecimalFormat df = new DecimalFormat("#.#####");
             return df.format(n);
         }
         //else, the number gets printed normally
