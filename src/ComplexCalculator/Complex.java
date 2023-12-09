@@ -3,14 +3,15 @@ package ComplexCalculator;
 import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.ZeroDivisionException;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * The Complex class represents complex numbers given their imaginary and real
- * part;
- * The class provides all methods for operations such as sum, subtraction,
+ * part; The class provides all methods for operations such as sum, subtraction,
  * product and division.
+ *
  * @author group11
  */
 public final class Complex implements Serializable {
@@ -305,11 +306,16 @@ public final class Complex implements Serializable {
      * @return String
      */
     private String printNumber(double n) {
+        /*if the number doesn't have a decimal part and is included in the range that the "Double" class prints
+        without simplifying it gets printed as an int*/
         if (n % 1.0 == 0 && n < 10000000 && n > -10000000) {
             return String.valueOf((int) n);
-        } else if (n < 10000000 && n > -10000000) {
-            return String.format("%.3f", n);
+        } //if the number has a decimal part and is still included in the range that the "Double" class prints without simplifying it gets printed as a double with a maximum of three decimal digits.
+        else if (n < 10000000 && n > -10000000) {
+            DecimalFormat df = new DecimalFormat("#.###");
+            return df.format(n);
         }
+        //else, the number gets printed normally
         return String.valueOf(n);
     }
 
@@ -327,12 +333,15 @@ public final class Complex implements Serializable {
 
     @Override
     public String toString() {
+        //if the number doesn't have an imaginary part only the real part gets printed
         if (imaginary == 0) {
             return printNumber(real);
-        } else if (real == 0) {
+        } //if the number doesn't have a real part only the imaginary part gets printed, making sure that if the number is -1 or 1 just -j or j get printed
+        else if (real == 0) {
             return (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "")
                     + (imaginary == -1 ? "-" : "") + "j";
-        } else {
+        } //else the whole complex number gets printed, making the same checks for the imaginary part as before
+        else {
             return printNumber(real) + (imaginary > 0 ? "+" : "")
                     + (imaginary != 1 && imaginary != 0 && imaginary != -1 ? printNumber(imaginary) : "")
                     + (imaginary == -1 ? "-" : "") + (imaginary != 0 ? "j" : "");

@@ -65,6 +65,5 @@ public class Calculator {
         VariableOperation vop= (VariableOperation) variableOperation;
         return vop.getMap();
     }
-    
 
 }

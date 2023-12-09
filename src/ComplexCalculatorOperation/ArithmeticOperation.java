@@ -5,7 +5,11 @@ import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 
 /**
- *
+ * The ArithmeticOperation class manages the arithmetic operations on the stack.
+ * It provides an operationInterpreter method, which calls the needed function given
+ * the input.
+ * The class also defines methods to do the operations, such as sum, sub, product and division, 
+ * which operate on the stack and use the methods defined in the Complex class.
  * @author group11
  */
 public class ArithmeticOperation extends Operation {

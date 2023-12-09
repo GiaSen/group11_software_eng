@@ -5,7 +5,10 @@ import ComplexCalculator.Complex;
 import ComplexCalculatorException.NotEnoughStackElementsException;
 
 /**
- *
+ * The StackOperation class manages the operations on the stack.
+ * It provides an operationInterpreter method, which calls the needed function given
+ * the input.
+ * The class also defines methods to manipulate the stack, such as Clear, Drop, Dup, Swap and Over.
  * @author group11
  */
 public class StackOperation extends Operation {

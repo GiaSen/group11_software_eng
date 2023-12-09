@@ -8,8 +8,11 @@ import ComplexCalculatorException.NotEnoughStackElementsException;
 import ComplexCalculatorException.VariableException;
 
 /**
- *
- * @author group11
+ * The VariableOperation class manages the operations on variables. It provides
+ * an operationInterpreter method, which calls the needed function given the
+ * input. The class also defines an HashMap data structure, which contains the
+ * variable names as keys and complex numbers as values. The class implements
+ * four methods to operate on the map: fromVarToStack, fromStackToVar, sumVar, subVar.
  */
 public class VariableOperation extends Operation {
 
@@ -71,7 +74,7 @@ public class VariableOperation extends Operation {
 
     /**
      * Updates the value of the Variable by adding to it the value on top of the
-     * Stack.
+     * Stack using the sum method defined in the Complex class.
      *
      * @param s
      */
@@ -86,7 +89,7 @@ public class VariableOperation extends Operation {
 
     /**
      * Updates the value of the Variable by subtracting to it the value on top
-     * of the Stack.
+     * of the Stack using the sub method defined in the Complex class.
      *
      * @param s
      */
@@ -98,7 +101,7 @@ public class VariableOperation extends Operation {
         }
         map.put(s, map.get(s).sub(stack.pop()));
     }
-    
+
     public HashMap<String, Complex> getMap() {
         return map;
     }
