@@ -42,7 +42,7 @@ public final class Complex implements Serializable {
         String numberNoWhiteSpace = s.replaceAll("\\s", "");
 
         // Matches complex number with BOTH real AND imaginary parts.  
-        Pattern patternA = Pattern.compile("^([+-]?[0-9]+\\.?[0-9]*)([-+]+[0-9]*\\.?[0-9]*)[j$]+");
+        Pattern patternA = Pattern.compile("^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)?[j]$");
 
         // Matches ONLY real number.
         Pattern patternB = Pattern.compile("^([+-]?[0-9]*\\.?[0-9]*)$");
