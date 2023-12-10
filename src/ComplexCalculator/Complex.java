@@ -202,17 +202,7 @@ public final class Complex implements Serializable {
             // No over/underflow
             t = Math.sqrt(2 * (abs(x, y) + x));
         } else {
-            // Potential over/underflow. First check infinites and real/imaginary only.
-
-            // Check for infinite
-            if (isPosInfinite(y)) {
-                return new Complex(Double.POSITIVE_INFINITY, imaginary);
-            } else if (isPosInfinite(x)) {
-                if (real == Double.NEGATIVE_INFINITY) {
-                    return new Complex(0, Math.copySign(Double.POSITIVE_INFINITY, imaginary));
-                }
-                return new Complex(Double.POSITIVE_INFINITY, Math.copySign(0, imaginary));
-            } else if (y == 0) {
+            if (y == 0) {
                 // Real only
                 final double sqrtAbs = Math.sqrt(x);
                 if (real < 0) {
@@ -259,16 +249,6 @@ public final class Complex implements Serializable {
             return new Complex(t / 2, imaginary / t);
         }
         return new Complex(y / t, Math.copySign(t / 2, imaginary));
-    }
-
-    /**
-     * Record whether the Complex number is positive infinite.
-     *
-     * @param d
-     * @return boolean
-     */
-    private static boolean isPosInfinite(double d) {
-        return d == Double.POSITIVE_INFINITY;
     }
 
     /**
