@@ -16,7 +16,16 @@ import java.util.regex.Pattern;
  */
 public final class Complex implements Serializable {
 
+    /**
+     * The safe maximum double value {@code x} to avoid overflow in sqrt.
+     */
     private static final double SQRT_SAFE_UPPER = Double.MAX_VALUE / 8;
+
+    /**
+     * {@code 1.0 / sqrt(2)}. This is pre-computed to the closest double from
+     * the exact result. It is 1 ULP different from 1.0 / Math.sqrt(2) but equal
+     * to Math.sqrt(2) / 2.
+     */
     private static final double ONE_OVER_ROOT2 = 0.7071067811865476;
     private static final String complexRegex = "^(?=[j.\\d+-])([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?![j.\\d]))([+-]?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+))?)?[j]$";
     private static final String realRegex = "^([+-]?[0-9]*\\.?[0-9]*)$";
@@ -180,7 +189,7 @@ public final class Complex implements Serializable {
 
     /**
      * Returns the square root of a Complex number.
-     *
+     * from package org.apache.commons.numbers.complex;
      * @return Complex
      */
     public Complex sqrt() {
