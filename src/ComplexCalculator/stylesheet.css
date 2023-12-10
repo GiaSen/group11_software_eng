@@ -13,12 +13,20 @@
     -fx-background-color: #E6E0CF;
 }
 
+#numButton:pressed {
+    -fx-background-color: #B5AB8F;
+}
+
 #opButton {
     -fx-background-color: #A2806C;
 }
 
 #opButton:hover {
-    -fx-background-color: #7C604E;
+    -fx-background-color: #856755;
+}
+
+#opButton:pressed {
+    -fx-background-color: #705544;
 }
 
 #stackOpButton {
@@ -29,12 +37,20 @@
     -fx-background-color: #E8A38A;
 }
 
+#stackOpButton:pressed {
+    -fx-background-color: #AD6E57;
+}
+
 #enterButton {
     -fx-background-color: #B4F56D;
 }
 
 #enterButton:hover {
     -fx-background-color: #A1DC61;
+}
+
+#enterButton:pressed {
+    -fx-background-color: #86BD4B;
 }
 
 #deleteButton {
@@ -45,12 +61,20 @@
     -fx-background-color: #D78B3B;
 }
 
+#deleteButton:pressed {
+    -fx-background-color: #AB6C2B;
+}
+
 #ACButton {
     -fx-background-color: #FDAE5B;
 }
 
 #ACButton:hover {
     -fx-background-color: #D78B3B;
+}
+
+#ACButton:pressed {
+    -fx-background-color: #AB6C2B;
 }
 
 #varList {
@@ -65,12 +89,20 @@
     -fx-background-color: #6FBCB4;
 }
 
+#varList:pressed {
+    -fx-background-color: #549992;
+}
+
 #pushVar {
     -fx-background-color: #7ED7CE;
 }
 
 #pushVar:hover {
     -fx-background-color: #6FBCB4;
+}
+
+#pushVar:pressed {
+    -fx-background-color: #549992;
 }
 
 #popVar {
@@ -81,6 +113,10 @@
     -fx-background-color: #6FBCB4;
 }
 
+#popVar:pressed {
+    -fx-background-color: #549992;
+}
+
 #sumVar {
     -fx-background-color: #7ED7CE;
 }
@@ -89,12 +125,20 @@
     -fx-background-color: #6FBCB4;
 }
 
+#sumVar:pressed {
+    -fx-background-color: #549992;
+}
+
 #subVar {
     -fx-background-color: #7ED7CE;
 }
 
 #subVar:hover {
     -fx-background-color: #6FBCB4;
+}
+
+#subVar:pressed {
+    -fx-background-color: #549992;
 }
 
 #stackView {
