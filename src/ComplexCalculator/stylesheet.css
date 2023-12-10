@@ -5,6 +5,12 @@
     -fx-opacity: 1;
 }
 
+#varTooltip {
+    -fx-background-color: #24221f;
+    -fx-opacity: 0.9;
+    -fx-font-size: 12;
+}
+
 #numButton {
     -fx-background-color: #FDF7E7;
 }
