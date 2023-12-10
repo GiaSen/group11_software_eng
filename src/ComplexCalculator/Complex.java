@@ -45,11 +45,13 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Initializes a new Complex number given a String.
+     * Initializes a new Complex number given a String Splits a string from its
+     * matched regex and parses the input into doubles.
      *
      * @param s
      */
     public Complex(String s) {
+        // Deletes the white spaces.
         String numberNoWhiteSpace = s.replaceAll("\\s", "");
 
         // Matches complex number with BOTH real AND imaginary parts.  
@@ -61,10 +63,15 @@ public final class Complex implements Serializable {
         // Matches ONLY imaginary number.
         Pattern patternC = Pattern.compile(imaginaryRegex);
 
+        // Creates a matcher that will match the given input against this
+        // pattern.
+        // Splits the string as dictated by the regex.
         Matcher matcherA = patternA.matcher(numberNoWhiteSpace);
         Matcher matcherB = patternB.matcher(numberNoWhiteSpace);
         Matcher matcherC = patternC.matcher(numberNoWhiteSpace);
 
+        // Checks which pattern was matched and assigns the right value to real 
+        // and imaginary part.
         if (matcherA.find()) {
             real = Double.parseDouble(matcherA.group(1));
             if (matcherA.group(2).equals("+")) {
@@ -188,8 +195,9 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Returns the square root of a Complex number.
-     * from package org.apache.commons.numbers.complex;
+     * Returns the square root of a Complex number. from package
+     * org.apache.commons.numbers.complex;
+     *
      * @return Complex
      */
     public Complex sqrt() {
@@ -261,20 +269,20 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Record whether an operation will record an overflow.
+     * Checks if both x and y are in the region defined by the minimum and maximum.
      *
-     * @param x
-     * @param y
-     * @param min
-     * @param max
-     * @return boolean
+     * @param x  x value
+     * @param y y value
+     * @param min the minimum (exclusive)
+     * @param max the maximum (exclusive)
+     * @return true true if inside the region.
      */
     private static boolean inRegion(double x, double y, double min, double max) {
         return x < max && x > min && y < max && y > min;
     }
 
     /**
-     * Returns the absolute of 2 double numbers.
+     * Returns the absolute value of the Complex number.
      *
      * @param a
      * @param b

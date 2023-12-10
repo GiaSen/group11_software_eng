@@ -12,7 +12,8 @@ import ComplexCalculatorException.VariableException;
  * an operationInterpreter method, which calls the needed function given the
  * input. The class also defines an HashMap data structure, which contains the
  * variable names as keys and complex numbers as values. The class implements
- * four methods to operate on the map: fromVarToStack, fromStackToVar, sumVar, subVar.
+ * four methods to operate on the map: fromVarToStack, fromStackToVar, sumVar,
+ * subVar.
  */
 public class VariableOperation extends Operation {
 
@@ -49,18 +50,6 @@ public class VariableOperation extends Operation {
     }
 
     /**
-     * Pushes a number from a Variable into the Stack.
-     *
-     * @param s
-     */
-    public void fromVarToStack(String s) {
-        if (!map.containsKey(s)) {
-            throw new VariableException();
-        }
-        stack.push(map.get(s));
-    }
-
-    /**
      * Pushes a number from the Stack into a Variable.
      *
      * @param s
@@ -70,6 +59,18 @@ public class VariableOperation extends Operation {
             throw new NotEnoughStackElementsException();
         }
         map.put(s, stack.pop());
+    }
+
+    /**
+     * Pushes a number from a Variable into the Stack.
+     *
+     * @param s
+     */
+    public void fromVarToStack(String s) {
+        if (!map.containsKey(s)) {
+            throw new VariableException();
+        }
+        stack.push(map.get(s));
     }
 
     /**

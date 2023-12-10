@@ -78,6 +78,131 @@ public class ComplexCalculatorController implements Initializable {
     }
 
     /**
+     * Initializes the bindings between the variable buttons and the variable
+     * name.
+     */
+    private void initBinding() {
+        StringProperty btn0 = new SimpleStringProperty(">");
+        pushVar.textProperty().bind(Bindings.concat(">", varList.valueProperty()));
+
+        StringProperty btn1 = new SimpleStringProperty("<");
+        popVar.textProperty().bind(Bindings.concat("<", varList.valueProperty()));
+
+        StringProperty btn2 = new SimpleStringProperty("+");
+        sumVar.textProperty().bind(Bindings.concat("+", varList.valueProperty()));
+
+        StringProperty btn3 = new SimpleStringProperty("-");
+        subVar.textProperty().bind(Bindings.concat("-", varList.valueProperty()));
+
+        deleteButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
+        enterButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
+    }
+
+    /**
+     * Initializes the variable list with 26 letters (from a to z).
+     */
+    private void initVarList() {
+        // Adds 26 letters to the list.
+        for (Character i = 'a'; i <= 'z'; i++) {
+            combolist.add(i.toString());
+        }
+        // Inserts the combolist elements in the variable list
+        varList.setItems(combolist);
+        // The first variable shown is 'a'.
+        varList.getSelectionModel().selectFirst();
+        // Builds the var list aligning them on the left side.
+        varList.setCellFactory(lv -> {
+            ListCell<String> cell = new ListCell<String>() {
+                @Override
+                protected void updateItem(String c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(c);
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER_LEFT);
+            return cell;
+        });
+
+    }
+
+    /**
+     * Initializes the Stack list.
+     */
+    private void initStackList() {
+        // Builds the stack view centering items in it.
+        stackView.setCellFactory(lv -> {
+            ListCell<Complex> cell = new ListCell<Complex>() {
+                @Override
+                protected void updateItem(Complex c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(c.toString());
+                        setFont(Font.font(15));
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER);
+
+            return cell;
+        });
+
+    }
+
+    /**
+     * Sends the input to the Calculator interpreter and manages eventual
+     * Exceptions thrown showing an exceptionDialog with its relative message.
+     */
+    private void inputSend() {
+        try {
+            c.interpreter(textInput.getText());
+        } catch (InvalidInputException e) {
+            exceptionDialog("Invalid Input Detected", "Bad input insertion!");
+        } catch (NotEnoughDataException e) {
+            exceptionDialog("Not Enough Data", "There isn't enough data in the stack for the operation!");
+        } catch (NotEnoughStackElementsException e) {
+            exceptionDialog("Not Enough Stack Element", "There aren't enough elements in the stack!");
+        } catch (VariableException e) {
+            exceptionDialog("Variable Exception", "Impossible variable operation inserted!");
+        } catch (ZeroDivisionException e) {
+            exceptionDialog("Zero Division Detected", "Impossible division by 0!");
+        } finally {
+            textInput.setText("");
+            oblist.setAll(c.getStack());
+            updateVariableValue();
+        }
+
+    }
+
+    /**
+     * Updates the variable value shown in the variable list. If a variable
+     * value is null it isn't shown, otherwise its value is shown using the
+     * getMap method.
+     */
+    private void updateVariableValue() {
+        varList.setCellFactory(lv -> {
+            ListCell<String> cell = new ListCell<String>() {
+                @Override
+                protected void updateItem(String c, boolean empty) {
+                    super.updateItem(c, empty);
+                    if (map.get(c) == null) {
+                        setText(c);
+                    } else {
+                        setText(c + " = " + map.get(c));
+                    }
+                }
+            };
+            cell.setAlignment(Pos.CENTER_LEFT);
+            return cell;
+        });
+    }
+
+    /**
      * Determines the behaviour of the calculator when a button is pressed.
      *
      * @param event
@@ -122,52 +247,6 @@ public class ComplexCalculatorController implements Initializable {
         inputSend();
     }
 
-    private void initBinding() {
-        StringProperty btn0 = new SimpleStringProperty(">");
-        pushVar.textProperty().bind(Bindings.concat(">", varList.valueProperty()));
-
-        StringProperty btn1 = new SimpleStringProperty("<");
-        popVar.textProperty().bind(Bindings.concat("<", varList.valueProperty()));
-
-        StringProperty btn2 = new SimpleStringProperty("+");
-        sumVar.textProperty().bind(Bindings.concat("+", varList.valueProperty()));
-
-        StringProperty btn3 = new SimpleStringProperty("-");
-        subVar.textProperty().bind(Bindings.concat("-", varList.valueProperty()));
-
-        deleteButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
-        enterButton.disableProperty().bind(Bindings.isEmpty(textInput.textProperty()));
-    }
-
-    /**
-     * Initializes the variable list with 26 letters (from a to z).
-     */
-    private void initVarList() {
-        varList.getSelectionModel().select('a');
-        for (Character i = 'a'; i <= 'z'; i++) {
-            combolist.add(i.toString());
-        }
-        varList.setItems(combolist);
-        varList.getSelectionModel().selectFirst();
-
-        varList.setCellFactory(lv -> {
-            ListCell<String> cell = new ListCell<String>() {
-                @Override
-                protected void updateItem(String c, boolean empty) {
-                    super.updateItem(c, empty);
-                    if (empty) {
-                        setText(null);
-                    } else {
-                        setText(c);
-                    }
-                }
-            };
-            cell.setAlignment(Pos.CENTER_LEFT);
-            return cell;
-        });
-
-    }
-
     /**
      * Determines the behaviour of the calculator when the Enter button is
      * pressed from the keyboard.
@@ -194,49 +273,6 @@ public class ComplexCalculatorController implements Initializable {
     }
 
     /**
-     * Sends the input to the Calculator interpreter and manages eventual
-     * Exceptions thrown showing an exceptionDialog with its relative message.
-     */
-    private void inputSend() {
-        try {
-            c.interpreter(textInput.getText());
-        } catch (InvalidInputException e) {
-            exceptionDialog("Invalid Input Detected", "Bad input insertion!");
-        } catch (NotEnoughDataException e) {
-            exceptionDialog("Not Enough Data", "There isn't enough data in the stack for the operation!");
-        } catch (NotEnoughStackElementsException e) {
-            exceptionDialog("Not Enough Stack Element", "There aren't enough elements in the stack!");
-        } catch (VariableException e) {
-            exceptionDialog("Variable Exception", "Impossible variable operation inserted!");
-        } catch (ZeroDivisionException e) {
-            exceptionDialog("Zero Division Detected", "Impossible division by 0!");
-        } finally {
-            textInput.setText("");
-            oblist.setAll(c.getStack());
-            updateVariableValue();
-        }
-
-    }
-    
-    private void updateVariableValue() {
-        varList.setCellFactory(lv -> {
-            ListCell<String> cell = new ListCell<String>() {
-                @Override
-                protected void updateItem(String c, boolean empty) {
-                    super.updateItem(c, empty);
-                    if (map.get(c)==null) {
-                        setText(c);
-                    } else {
-                        setText(c+" = "+map.get(c));
-                    }
-                }
-            };
-            cell.setAlignment(Pos.CENTER_LEFT);
-            return cell;
-        });
-    }
-
-    /**
      * Sets Title,HeaderText,ContentText for the alert window.
      *
      * @param header
@@ -249,27 +285,4 @@ public class ComplexCalculatorController implements Initializable {
         alert.showAndWait();
     }
 
-    /**
-     * Initializes the Stack list.
-     */
-    private void initStackList() {
-        stackView.setCellFactory(lv -> {
-            ListCell<Complex> cell = new ListCell<Complex>() {
-                @Override
-                protected void updateItem(Complex c, boolean empty) {
-                    super.updateItem(c, empty);
-                    if (empty) {
-                        setText(null);
-                    } else {
-                        setText(c.toString());
-                        setFont(Font.font(15));
-                    }
-                }
-            };
-            cell.setAlignment(Pos.CENTER);
-
-            return cell;
-        });
-
-    }
 }
