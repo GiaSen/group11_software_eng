@@ -48,6 +48,25 @@ public class ArithmeticOperationTest {
     @Test
     public void testOperationInterpreter() {
         System.out.println("opInterpreter");
+        
+        Complex n1 = new Complex(4, 2);
+        Complex n2 = new Complex(2, 4);
+        
+        stack.push(n1);
+        stack.push(n2);
+
+        instance.operationInterpreter("+");
+        
+        assertEquals(n1.sum(n2), stack.getFirst());
+    }
+    
+    @Test
+    public void testOperationInterpreter2() {
+        System.out.println("opInterpreter wrong input");
+        
+        assertThrows(InvalidInputException.class, () -> {
+            instance.operationInterpreter("sum");
+        });
     }
     
     /**
