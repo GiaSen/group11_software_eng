@@ -20,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Pietro
  */
 public class ArithmeticOperationTest {
+    
+    ArithmeticOperation instance;
+    ArrayDeque<Complex> stack;
 
     public ArithmeticOperationTest() {
     }
@@ -34,22 +37,28 @@ public class ArithmeticOperationTest {
 
     @BeforeEach
     public void setUp() {
+        stack = new ArrayDeque<>();
+        instance = new ArithmeticOperation(stack);
     }
 
     @AfterEach
     public void tearDown() {
     }
 
+    @Test
+    public void testOperationInterpreter() {
+        System.out.println("opInterpreter");
+    }
+    
     /**
      * Test of sum method, of class ArithmeticOperation.
      */
     @Test
     public void testSum() {
         System.out.println("sum");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
+        
         stack.push(n1);
         stack.push(n2);
 
@@ -61,8 +70,6 @@ public class ArithmeticOperationTest {
     @Test
     public void testSum2() {
         System.out.println("sum fail");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         stack.push(n1);
 
@@ -74,8 +81,6 @@ public class ArithmeticOperationTest {
     @Test
     public void testSub() {
         System.out.println("sub");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
         stack.push(n1);
@@ -85,12 +90,21 @@ public class ArithmeticOperationTest {
 
         assertEquals(n1.sub(n2), stack.getFirst());
     }
+    
+    @Test
+    public void testSub2() {
+        System.out.println("sub fail");
+        Complex n1 = new Complex(4, 2);
+        stack.push(n1);
+
+        assertThrows(NotEnoughDataException.class, () -> {
+            instance.sub();
+        });
+    }
 
     @Test
     public void testProduct() {
         System.out.println("product");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
         stack.push(n1);
@@ -100,12 +114,21 @@ public class ArithmeticOperationTest {
 
         assertEquals(n1.product(n2), stack.getFirst());
     }
+    
+    @Test
+    public void testProduct2() {
+        System.out.println("product fail");
+        Complex n1 = new Complex(4, 2);
+        stack.push(n1);
+
+        assertThrows(NotEnoughDataException.class, () -> {
+            instance.product();
+        });
+    }
 
     @Test
     public void testDivision() {
         System.out.println("division");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
         stack.push(n1);
@@ -115,12 +138,34 @@ public class ArithmeticOperationTest {
 
         assertEquals(n1.division(n2), stack.getFirst());
     }
+    
+    @Test
+    public void testDivision2() {
+        System.out.println("division fail");
+        Complex n1 = new Complex(4, 2);
+        stack.push(n1);
+
+        assertThrows(NotEnoughDataException.class, () -> {
+            instance.division();
+        });
+    }
+    
+    @Test
+    public void testDivision3() {
+        System.out.println("division by 0");
+        Complex n1 = new Complex(4, 2);
+        Complex n2 = new Complex(0, 0);
+        stack.push(n1);
+        stack.push(n2);
+
+        assertThrows(ZeroDivisionException.class, () -> {
+            instance.division();
+        });
+    }
 
     @Test
     public void testInversion() {
         System.out.println("inversion");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         stack.push(n1);
 
@@ -128,18 +173,34 @@ public class ArithmeticOperationTest {
 
         assertEquals(n1.negate(), stack.getFirst());
     }
+    
+    @Test
+    public void testInversion2() {
+        System.out.println("inversion fail");
+
+        assertThrows(NotEnoughDataException.class, () -> {
+            instance.inversion();
+        });
+    }
 
     @Test
     public void testSqrt() {
         System.out.println("sqrt");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        ArithmeticOperation instance = new ArithmeticOperation(stack);
         Complex n1 = new Complex(4, 2);
         stack.push(n1);
 
         instance.sqrt();
 
         assertEquals(n1.sqrt(), stack.getFirst());
+    }
+    
+    @Test
+    public void testSqrt2() {
+        System.out.println("sqrt fail");
+
+        assertThrows(NotEnoughDataException.class, () -> {
+            instance.sqrt();
+        });
     }
 
 }
