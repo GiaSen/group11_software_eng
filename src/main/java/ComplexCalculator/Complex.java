@@ -4,6 +4,8 @@ import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.ZeroDivisionException;
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -306,7 +308,9 @@ public final class Complex implements Serializable {
             return String.valueOf((int) n);
         } //if the number has a decimal part and is still included in the range that the "Double" class prints without simplifying it gets printed as a double with a maximum of three decimal digits.
         else if (n < 10000000 && n > -10000000) {
-            DecimalFormat df = new DecimalFormat("#.#####");
+            NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
+            DecimalFormat df = (DecimalFormat) nf;
+            df.applyPattern("#.#####");
             return df.format(n);
         }
         //else, the number gets printed normally
