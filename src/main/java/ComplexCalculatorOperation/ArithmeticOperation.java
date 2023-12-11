@@ -3,6 +3,7 @@ package ComplexCalculatorOperation;
 import ComplexCalculatorException.NotEnoughDataException;
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
+import ComplexCalculatorException.InvalidInputException;
 
 /**
  * The ArithmeticOperation class manages the arithmetic operations on the stack.
@@ -42,6 +43,8 @@ public class ArithmeticOperation extends Operation {
             sqrt();
         } else if (input.equals("+-")) {
             inversion();
+        } else{
+            throw new InvalidInputException();
         }
     }
 
