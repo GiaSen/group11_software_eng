@@ -11,7 +11,8 @@ import java.util.regex.Pattern;
 
 /**
  * The Complex class represents complex numbers given their imaginary and real
- * part; The class provides all methods for operations such as sum, subtraction,
+ * part.
+ * The class provides all methods for operations such as sum, subtraction,
  * product and division.
  *
  * @author group11
@@ -38,8 +39,8 @@ public final class Complex implements Serializable {
     /**
      * Initializes a new Complex number given its real and imaginary part.
      *
-     * @param real
-     * @param imaginary
+     * @param real real part.
+     * @param imaginary imaginary part.
      */
     public Complex(double real, double imaginary) {
         this.real = real;
@@ -50,7 +51,7 @@ public final class Complex implements Serializable {
      * Initializes a new Complex number given a String Splits a string from its
      * matched regex and parses the input into doubles.
      *
-     * @param s
+     * @param s the string to convert into a Complex.
      */
     public Complex(String s) {
         // Deletes the white spaces.
@@ -101,16 +102,18 @@ public final class Complex implements Serializable {
     }
 
     /**
+     * Returns the real part of the Complex number.
      *
-     * @return double
+     * @return the real part of the Complex as a Double.
      */
     public double getReal() {
         return real;
     }
 
     /**
-     *
-     * @return double
+     * Returns the imaginary part of the Complex number.
+     * 
+     * @return the imaginary part of the Complex as a Double.
      */
     public double getImaginary() {
         return imaginary;
@@ -119,7 +122,7 @@ public final class Complex implements Serializable {
     /**
      * Returns the negate of a Complex number.
      *
-     * @return Complex
+     * @return the Complex with inverted signs.
      */
     public Complex negate() {
         return new Complex(-real, -imaginary);
@@ -128,8 +131,8 @@ public final class Complex implements Serializable {
     /**
      * Returns the sum of 2 Complex numbers.
      *
-     * @param n
-     * @return Complex
+     * @param n the Complex to be added to this Complex
+     * @return this + n
      */
     public Complex sum(Complex n) {
         double a = real;
@@ -143,8 +146,8 @@ public final class Complex implements Serializable {
     /**
      * Returns the subtraction of 2 Complex numbers.
      *
-     * @param n
-     * @return Complex
+     * @param n the Complex to be subtracted to this Complex
+     * @return this - n
      */
     public Complex sub(Complex n) {
         double a = real;
@@ -158,8 +161,8 @@ public final class Complex implements Serializable {
     /**
      * Returns the product of 2 Complex numbers.
      *
-     * @param n
-     * @return Complex
+     * @param n the Complex to be multiplied to this Complex
+     * @return this * n
      */
     public Complex product(Complex n) {
         double a = real;
@@ -173,8 +176,8 @@ public final class Complex implements Serializable {
     /**
      * Returns the division of 2 Complex numbers.
      *
-     * @param n
-     * @return Complex
+     * @param n the Complex to be divided to this Complex
+     * @return this / n
      */
     public Complex division(Complex n) {
         double a = real;
@@ -197,10 +200,10 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Returns the square root of a Complex number. from package
-     * org.apache.commons.numbers.complex;
+     * Returns the square root of a Complex number.
+     * from package org.apache.commons.numbers.complex;
      *
-     * @return Complex
+     * @return the sqrt of this Complex.
      */
     public Complex sqrt() {
 
@@ -287,9 +290,9 @@ public final class Complex implements Serializable {
     /**
      * Returns the absolute value of the Complex number.
      *
-     * @param a
-     * @param b
-     * @return double
+     * @param a the real part of the Complex number.
+     * @param b the imaginary part of the Complex number.
+     * @return the absolute value of the Complex number.
      */
     private static double abs(double a, double b) {
         return (Math.sqrt(a * a + b * b));
@@ -298,8 +301,8 @@ public final class Complex implements Serializable {
     /**
      * States if the input String is a Complex number.
      *
-     * @param s
-     * @return boolean
+     * @param s the String to check for being a Complex Number.
+     * @return true if the String is a Complex, false if it isn't.
      */
     public static boolean isComplex(String s) {
         return s.matches(complexRegex)
@@ -312,8 +315,8 @@ public final class Complex implements Serializable {
      * function returns true if the two objects are the same, or if they have
      * the same real and imaginary part.
      *
-     * @param other
-     * @return boolean
+     * @param other the object to compare with.
+     * @return true if the objects are the same; false otherwise.
      */
     @Override
     public boolean equals(Object other) {
@@ -328,14 +331,14 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Prints numbers to a specified format. 
+     * Prints Double numbers to a specified format. 
      * 
-     * If the parameter is an integer until +-10^7 it prints the number
-     * as an integer; If the parameter is a double it prints the number
-     * as a double.
+     * If the parameter is an integer (no decimal part) until +-10^7 it prints
+     * the number as an integer; If the parameter is a double it prints the
+     * number as a double.
      *
-     * @param n
-     * @return String
+     * @param n the Double number to print.
+     * @return the formatted number.
      */
     private String printNumber(double n) {
         /*if the number doesn't have a decimal part and is included in the range that the "Double" class prints
@@ -353,6 +356,11 @@ public final class Complex implements Serializable {
         return String.valueOf(n);
     }
 
+    /**
+     * Returns a string representation of this Double object.
+     *
+     * @return a String representation of this Complex.
+     */
     @Override
     public String toString() {
         //if the number doesn't have an imaginary part only the real part gets printed

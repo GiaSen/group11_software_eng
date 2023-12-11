@@ -17,18 +17,20 @@ public abstract class Operation {
      */
     protected final ArrayDeque<Complex> stack;
 
-    /**
+    /** Initializes the Operation class.
      *
-     * @param stack
+     * @param stack the stack data structure on which the operation will work.
      */
     public Operation(ArrayDeque stack) {
         this.stack = stack;
     }
 
     /**
+     * Calls the function suited to the type of operation entered as
+     * input.
      *
-     * @param s
+     * @param input the String to analize.
      */
-    public abstract void operationInterpreter(String s);
+    public abstract void operationInterpreter(String input);
 
 }

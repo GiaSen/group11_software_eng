@@ -6,17 +6,18 @@ package ComplexCalculatorException;
  */
 public class NotEnoughStackElementsException extends RuntimeException {
 
-    /**
+    /** Constructs a NotEnoughStackElementsException with no detail message.
      *
      */
     public NotEnoughStackElementsException() {
     }
 
     /**
+     * Constructs a NotEnoughStackElementsException with the specified detail message.
      *
-     * @param msg
+     * @param string the detail message.
      */
-    public NotEnoughStackElementsException(String msg) {
-        super(msg);
+    public NotEnoughStackElementsException(String string) {
+        super(string);
     }
 }

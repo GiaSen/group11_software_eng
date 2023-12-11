@@ -29,7 +29,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 
-/**
+/** The ComplexCalculatorController class controls the Calculator and the GUI.
  *
  * @author group11
  */
