@@ -196,7 +196,7 @@ public class ArithmeticOperationTest {
         assertThrows(ZeroDivisionException.class, () -> {
             instance.division();
         });
-        assertEquals(stack.size(), 0);
+        assertEquals(stack.size(), 2);
     }
 
     @Test

@@ -4,6 +4,7 @@ import ComplexCalculatorException.NotEnoughDataException;
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.InvalidInputException;
+import ComplexCalculatorException.ZeroDivisionException;
 
 /**
  * The ArithmeticOperation class manages the arithmetic operations on the stack.
@@ -95,6 +96,11 @@ public class ArithmeticOperation extends Operation {
         if (stack.size() < 2) {
             throw new NotEnoughDataException();
         }
+        
+        if (stack.getFirst().equals(new Complex(0, 0))) {
+            throw new ZeroDivisionException();
+        }
+        
         Complex n1 = stack.pop();
         Complex n2 = stack.pop();
 
