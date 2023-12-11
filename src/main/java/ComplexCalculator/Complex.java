@@ -271,9 +271,10 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Checks if both x and y are in the region defined by the minimum and maximum.
+     * Checks if both x and y are in the region defined by the minimum and
+     * maximum.
      *
-     * @param x  x value
+     * @param x x value
      * @param y y value
      * @param min the minimum (exclusive)
      * @param max the maximum (exclusive)
@@ -295,8 +296,41 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * If the parameter is an integer until +-10^7 it prints the number as an
-     * integer; If the parameter is a double it prints the number as a double.
+     * States if the input String is a Complex number.
+     *
+     * @param s
+     * @return boolean
+     */
+    public static boolean isComplex(String s) {
+        return s.matches(complexRegex)
+                || s.matches(realRegex)
+                || s.matches(imaginaryRegex);
+    }
+
+    /**
+     * States if two complex objects have the same real and imaginary part. The
+     * function returns true if the two objects are the same, or if they have
+     * the same real and imaginary part.
+     *
+     * @param other
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other instanceof Complex) {
+            final Complex c = (Complex) other;
+            return real == c.real && imaginary == c.imaginary;
+        }
+        return false;
+    }
+
+    /**
+     * Prints numbers to a specified format. If the parameter is an integer
+     * until +-10^7 it prints the number as an integer; If the parameter is a
+     * double it prints the number as a double.
      *
      * @param n
      * @return String
@@ -315,18 +349,6 @@ public final class Complex implements Serializable {
         }
         //else, the number gets printed normally
         return String.valueOf(n);
-    }
-
-    /**
-     * States if the input String is a Complex number.
-     *
-     * @param s
-     * @return boolean
-     */
-    public static boolean isComplex(String s) {
-        return s.matches(complexRegex)
-                || s.matches(realRegex)
-                || s.matches(imaginaryRegex);
     }
 
     @Override
