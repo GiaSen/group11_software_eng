@@ -58,15 +58,23 @@ public class ArithmeticOperationTest {
         instance.operationInterpreter("+");
         
         assertEquals(n1.sum(n2), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
     public void testOperationInterpreter2() {
         System.out.println("opInterpreter wrong input");
         
+        Complex n1 = new Complex(4, 2);
+        Complex n2 = new Complex(2, 4);
+        
+        stack.push(n1);
+        stack.push(n2);
+        
         assertThrows(InvalidInputException.class, () -> {
             instance.operationInterpreter("sum");
         });
+        assertEquals(stack.size(), 2);
     }
     
     /**
@@ -84,6 +92,7 @@ public class ArithmeticOperationTest {
         instance.sum();
 
         assertEquals(n1.sum(n2), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
 
     @Test
@@ -95,6 +104,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.sum();
         });
+        assertEquals(stack.size(), 1);
     }
 
     @Test
@@ -108,6 +118,7 @@ public class ArithmeticOperationTest {
         instance.sub();
 
         assertEquals(n1.sub(n2), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -119,6 +130,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.sub();
         });
+        assertEquals(stack.size(), 1);
     }
 
     @Test
@@ -132,6 +144,7 @@ public class ArithmeticOperationTest {
         instance.product();
 
         assertEquals(n1.product(n2), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -143,6 +156,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.product();
         });
+        assertEquals(stack.size(), 1);
     }
 
     @Test
@@ -156,6 +170,7 @@ public class ArithmeticOperationTest {
         instance.division();
 
         assertEquals(n1.division(n2), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -167,6 +182,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.division();
         });
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -180,6 +196,7 @@ public class ArithmeticOperationTest {
         assertThrows(ZeroDivisionException.class, () -> {
             instance.division();
         });
+        assertEquals(stack.size(), 0);
     }
 
     @Test
@@ -191,6 +208,7 @@ public class ArithmeticOperationTest {
         instance.inversion();
 
         assertEquals(n1.negate(), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -200,6 +218,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.inversion();
         });
+        assertEquals(stack.size(), 0);
     }
 
     @Test
@@ -211,6 +230,7 @@ public class ArithmeticOperationTest {
         instance.sqrt();
 
         assertEquals(n1.sqrt(), stack.getFirst());
+        assertEquals(stack.size(), 1);
     }
     
     @Test
@@ -220,6 +240,7 @@ public class ArithmeticOperationTest {
         assertThrows(NotEnoughDataException.class, () -> {
             instance.sqrt();
         });
+        assertEquals(stack.size(), 0);
     }
 
 }
