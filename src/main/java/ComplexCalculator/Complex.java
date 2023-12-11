@@ -326,9 +326,11 @@ public final class Complex implements Serializable {
     }
 
     /**
-     * Prints numbers to a specified format. If the parameter is an integer
-     * until +-10^7 it prints the number as an integer; If the parameter is a
-     * double it prints the number as a double.
+     * Prints numbers to a specified format. 
+     * 
+     * If the parameter is an integer until +-10^7 it prints the number
+     * as an integer; If the parameter is a double it prints the number
+     * as a double.
      *
      * @param n
      * @return String
