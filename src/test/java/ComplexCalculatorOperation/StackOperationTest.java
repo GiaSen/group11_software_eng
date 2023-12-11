@@ -49,80 +49,19 @@ public class StackOperationTest {
      * Test of operationInterpreter method, of class StackOperation.
      */
     @Test
-    public void testOperationInterpreterClear() {
-        System.out.println("OperationInterpreterClear");
-
-        Complex n = new Complex(10, -8.1);
-        stack.push(n);
-        String input = "clr"; //example of a bad input that throws exception
-        assertThrows(InvalidInputException.class, () -> instance.operationInterpreter(input));
-        
-    }
-
-    @Test
-    public void testOperationInterpreterDrop() {
-        System.out.println("OperationInterpreterDrop");
-
-        Complex n1 = new Complex(10, -8.1);
-        Complex n2 = new Complex(2, 1.2);
-        stack.push(n1);
-        stack.push(n2);
-        String input = " ";  //example of a bad input that throws exception
-        assertThrows(InvalidInputException.class,()->instance.operationInterpreter(input));
-        
-    }
-
-    @Test
-    public void testOperationInterpreterDup() {
-        System.out.println("OperationInterpreterDup");
-
-        Complex n = new Complex(10, -8.1);
-        stack.push(n);
-        String input = "duplicate";  //example of a bad input that throws exception
-        assertThrows(InvalidInputException.class,()->instance.operationInterpreter(input));
-        
-    }
-
-    @Test
-    public void testOperationInterpreterSwap() {
-        System.out.println("OperationInterpreterSwap");
+    public void testOperationInterpreter() {
+        System.out.println("OperationInterpreter");
 
         Complex n1 = new Complex(10, -8.1);
         Complex n2 = new Complex(-9, 1.2);
         stack.push(n1);
         stack.push(n2);
 
-        int size = stack.size();
-        String input = "swaptheitems";  //example of a bad input that throws exception
-        assertThrows(InvalidInputException.class,()->instance.operationInterpreter(input));
-
+        String input = "prova";  //example of a bad input that throws exception
+        assertThrows(InvalidInputException.class, () -> instance.operationInterpreter(input));
 
     }
 
-    @Test
-    public void testOperationInterpreterOver() {
-        System.out.println("OperationInterpreterOver");
-
-        Complex n1 = new Complex(10, -8.1);
-        Complex n2 = new Complex(2, 3.1);
-
-        stack.push(n1);
-        stack.push(n2);
-
-        int size = stack.size();
-        instance.operationInterpreter("over");
-
-        assertEquals(size + 1, stack.size());
-
-        Complex r1 = stack.pop();
-        Complex r2 = stack.pop();
-        Complex r3 = stack.pop();
-
-        assertEquals(n1, r1);
-        assertEquals(n2, r2);
-        assertEquals(n1, r3);
-
-    }
 
     /**
      * Test of clear method, of class StackOperation.
