@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import ComplexCalculator.Complex;
+import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.NotEnoughStackElementsException;
 import ComplexCalculatorException.VariableException;
 
@@ -45,6 +46,8 @@ public class VariableOperation extends Operation {
             sumVar(fields[1]);
         } else if (input.contains("-")) {
             subVar(fields[1]);
+        } else {
+            throw new InvalidInputException();
         }
 
     }
