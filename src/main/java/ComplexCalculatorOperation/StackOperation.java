@@ -2,6 +2,7 @@ package ComplexCalculatorOperation;
 
 import java.util.ArrayDeque;
 import ComplexCalculator.Complex;
+import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.NotEnoughStackElementsException;
 
 /**
@@ -39,6 +40,8 @@ public class StackOperation extends Operation {
             swap();
         } else if (input.equalsIgnoreCase("over")) {
             over();
+        } else {
+            throw new InvalidInputException();
         }
     }
 
