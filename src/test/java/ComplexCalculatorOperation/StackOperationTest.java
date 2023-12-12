@@ -78,8 +78,7 @@ public class StackOperationTest {
     @Test
     public void testClear2() {
         System.out.println("Clear2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
+        
         Complex n = new Complex(1, 2);
         stack.push(n);
 
@@ -91,8 +90,7 @@ public class StackOperationTest {
     @Test
     public void testClear3() {
         System.out.println("Clear3");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
+        
         Complex n1 = new Complex(1, 2);
         Complex n2 = new Complex(-10, 2.5);
         Complex n3 = new Complex(23, -18);
@@ -111,8 +109,6 @@ public class StackOperationTest {
     @Test
     public void testDrop1() {
         System.out.println("Drop1");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         int size = stack.size();
 
@@ -123,11 +119,8 @@ public class StackOperationTest {
     @Test
     public void testDrop2() {
         System.out.println("Drop2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 5);
-
         stack.push(n1);
 
         instance.drop();
@@ -138,12 +131,9 @@ public class StackOperationTest {
     @Test
     public void testDrop3() {
         System.out.println("Drop3");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 5);
         Complex n2 = new Complex(-5, -3.2);
-
         stack.push(n1);
         stack.push(n2);
 
@@ -158,8 +148,6 @@ public class StackOperationTest {
     @Test
     public void testDup1() {
         System.out.println("Dup1");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         int size = stack.size();
 
@@ -170,11 +158,8 @@ public class StackOperationTest {
     @Test
     public void testDup2() {
         System.out.println("Dup2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
-
         stack.push(n1);
 
         int size = stack.size();
@@ -188,18 +173,16 @@ public class StackOperationTest {
     @Test
     public void testDup3() {
         System.out.println("Dup3");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
         Complex n2 = new Complex(-2, 8.7);
-
         stack.push(n1);
         stack.push(n2);
 
         int size = stack.size();
 
         instance.dup();
+        
         assertEquals(size + 1, stack.size());
         assertEquals(n2, stack.getFirst());
     }
@@ -210,10 +193,9 @@ public class StackOperationTest {
     @Test
     public void testSwap1() {
         System.out.println("Swap1");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         int size = stack.size();
+        
         assertThrows(NotEnoughStackElementsException.class, () -> instance.swap());
         assertEquals(size, stack.size());
     }
@@ -221,12 +203,10 @@ public class StackOperationTest {
     @Test
     public void testSwap2() {
         System.out.println("Swap2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         int size = stack.size();
+        
         Complex n1 = new Complex(10, 3);
-
         stack.push(n1);
 
         assertThrows(NotEnoughStackElementsException.class, () -> instance.swap());
@@ -236,13 +216,12 @@ public class StackOperationTest {
     @Test
     public void testSwap3() {
         System.out.println("Swap3");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
         Complex n2 = new Complex(1, -3);
         stack.push(n1);
         stack.push(n2);
+        
         int size = stack.size();
 
         instance.swap();
@@ -255,8 +234,6 @@ public class StackOperationTest {
     @Test
     public void testSwap4() {
         System.out.println("Swap4");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
         Complex n2 = new Complex(1, -3);
@@ -281,40 +258,36 @@ public class StackOperationTest {
     @Test
     public void testOver1() {
         System.out.println("Over1");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
+        int size = stack.size();
+        
         assertThrows(NotEnoughStackElementsException.class, () -> instance.over());
-
+        assertEquals(size,stack.size());
+  
     }
 
     @Test
     public void testOver2() {
         System.out.println("Over2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n = new Complex(1, 2);
-
         stack.push(n);
 
         int size = stack.size();
 
         assertThrows(NotEnoughStackElementsException.class, () -> instance.over());
-
+        assertEquals(size,stack.size());
     }
 
     @Test
     public void testOver3() {
         System.out.println("Over2");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
         Complex n2 = new Complex(1, -3);
-
         stack.push(n1);
         stack.push(n2);
+        
         int size = stack.size();
 
         instance.over();
@@ -334,16 +307,14 @@ public class StackOperationTest {
     @Test
     public void testOver4() {
         System.out.println("Over3");
-        ArrayDeque<Complex> stack = new ArrayDeque<>();
-        StackOperation instance = new StackOperation(stack);
 
         Complex n1 = new Complex(10, 3);
         Complex n2 = new Complex(1, -3);
         Complex n3 = new Complex(-1, 3.7);
-
         stack.push(n1);
         stack.push(n2);
         stack.push(n3);
+        
         int size = stack.size();
 
         instance.over();
