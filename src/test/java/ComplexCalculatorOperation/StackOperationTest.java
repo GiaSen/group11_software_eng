@@ -56,12 +56,27 @@ public class StackOperationTest {
         Complex n2 = new Complex(-9, 1.2);
         stack.push(n1);
         stack.push(n2);
-
-        String input = "prova";  //example of a bad input that throws exception
-        assertThrows(InvalidInputException.class, () -> instance.operationInterpreter(input));
+        
+        instance.operationInterpreter("clear");
+        
+        assertEquals(0,stack.size());
+        
 
     }
 
+    @Test
+    public void testOperationInterpreter2() {
+        System.out.println("OperationInterpreter wrong input");
+
+        Complex n1 = new Complex(10, -8.1);
+        Complex n2 = new Complex(-9, 1.2);
+        stack.push(n1);
+        stack.push(n2);
+
+        String input = "test";  //example of a bad input that throws exception
+        assertThrows(InvalidInputException.class, () -> instance.operationInterpreter(input));
+
+    }
 
     /**
      * Test of clear method, of class StackOperation.
