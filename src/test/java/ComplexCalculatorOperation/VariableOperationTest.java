@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author giasen
+ * @author group11
  */
 public class VariableOperationTest {
 

@@ -15,6 +15,7 @@ import ComplexCalculatorException.VariableException;
  * variable names as keys and complex numbers as values. The class implements
  * four methods to operate on the map: fromVarToStack, fromStackToVar, sumVar,
  * subVar.
+ * @author group11
  */
 public class VariableOperation extends Operation {
 
