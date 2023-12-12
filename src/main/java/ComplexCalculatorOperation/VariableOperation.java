@@ -38,7 +38,9 @@ public class VariableOperation extends Operation {
     @Override
     public void operationInterpreter(String input) {
         String fields[] = input.split("[><+-]");
-        if (input.contains(">")) {
+        if (!input.matches("^[<+\\->][a-z]$")) {
+            throw new InvalidInputException();
+        } else if (input.contains(">")) {
             fromStackToVar(fields[1]);
         } else if (input.contains("<")) {
             fromVarToStack(fields[1]);
