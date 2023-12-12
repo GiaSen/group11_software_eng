@@ -1,5 +1,6 @@
 package ComplexCalculator;
 
+import ComplexCalculatorException.InvalidInputException;
 import ComplexCalculatorException.ZeroDivisionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -27,6 +28,13 @@ public class ComplexTest {
 
     @AfterEach
     public void tearDown() {
+    }
+
+    @Test
+    public void testComplex() {
+        System.out.println("Complex wrong input");
+        //example of bad input insertion
+        assertThrows(InvalidInputException.class, () -> new Complex("Testing")); 
     }
 
     /**
