@@ -6,15 +6,16 @@ package ComplexCalculatorException;
  */
 public class VariableException extends RuntimeException {
 
-    /**
+    /** Constructs a VariableException with no detail message.
      *
      */
     public VariableException() {
     }
 
     /**
+     * Constructs a VariableException with the specified detail message.
      *
-     * @param string
+     * @param string the detail message.
      */
     public VariableException(String string) {
         super(string);

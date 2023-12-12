@@ -7,16 +7,17 @@ import ComplexCalculatorException.NotEnoughStackElementsException;
 
 /**
  * The StackOperation class manages the operations on the stack.
- * It provides an operationInterpreter method, which calls the needed function given
- * the input.
- * The class also defines methods to manipulate the stack, such as Clear, Drop, Dup, Swap and Over.
+ * It provides an operationInterpreter method, which calls the needed function
+ * given the input.
+ * The class also defines methods to manipulate the Stack, such as Clear, Drop,
+ * Dup, Swap and Over.
  * @author group11
  */
 public class StackOperation extends Operation {
 
-    /**
+    /** Initializes the StackOperation class.
      *
-     * @param stack
+     * @param stack the stack data structure on which the operation will work.
      */
     public StackOperation(ArrayDeque stack) {
         super(stack);
@@ -26,7 +27,9 @@ public class StackOperation extends Operation {
      * Calls the function suited to the type of Stack operation entered as
      * input.
      *
-     * @param input
+     * @param input the String to analize.
+     * @throws InvalidInputException if the String doesn't correspond to any of
+     * the supported operations.
      */
     @Override
     public void operationInterpreter(String input) {
@@ -54,6 +57,9 @@ public class StackOperation extends Operation {
 
     /**
      * Removes the first element from the Stack.
+     * 
+     * @throws NotEnoughStackElementsException if the Stack doesn't contain
+     * enough elements for the operation.
      */
     public void drop() {
         if (stack.size() < 1) {
@@ -64,6 +70,9 @@ public class StackOperation extends Operation {
 
     /**
      * Copies the top element of the Stack and pushes it on top of it.
+     * 
+     * @throws NotEnoughStackElementsException if the Stack doesn't contain
+     * enough elements for the operation.
      */
     public void dup() {
         if (stack.size() < 1) {
@@ -74,6 +83,9 @@ public class StackOperation extends Operation {
 
     /**
      * Swaps the first 2 elements of the Stack.
+     * 
+     * @throws NotEnoughStackElementsException if the Stack doesn't contain
+     * enough elements for the operation.
      */
     public void swap() {
         if (stack.size() < 2) {
@@ -87,6 +99,9 @@ public class StackOperation extends Operation {
 
     /**
      * Copies the second Stack element and pushes it on top of the Stack.
+     * 
+     * @throws NotEnoughStackElementsException if the Stack doesn't contain
+     * enough elements for the operation.
      */
     public void over() {
         if (stack.size() < 2) {

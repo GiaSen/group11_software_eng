@@ -7,7 +7,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-/**
+/** The Calculator class initializes the various Operation objects and the Stack
+ * data structure.
+ * It's responsible for redirecting the user input to the various Operation
+ * objects.
  *
  * @author group11
  */
@@ -33,7 +36,7 @@ public class Calculator {
      * States what type of input has been entered and calls the relative
      * function to elaborate the operation.
      *
-     * @param input
+     * @param input the String to analize.
      */
     public void interpreter(String input) {
         //List<String> variableOperations = Arrays.asList("+","-","<",">");
@@ -53,14 +56,20 @@ public class Calculator {
         }
     }
 
-    /**
-     *
-     * @return
+    /** Returns the Stack.
+     * This method is used to show the Stack contents in the GUI.
+     * 
+     * @return the ArrayDeque data structure used for the Stack.
      */
     public ArrayDeque<Complex> getStack() {
         return stack;
     }
     
+    /** Returns the Variables Map from VariableOperation.
+     * This method is used to show the Variables Map contents in the GUI.
+     * 
+     * @return the HashMap data structure,
+     */
     public HashMap<String, Complex> getMap() {
         VariableOperation vop= (VariableOperation) variableOperation;
         return vop.getMap();

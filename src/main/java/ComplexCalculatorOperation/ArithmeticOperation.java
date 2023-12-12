@@ -16,9 +16,9 @@ import ComplexCalculatorException.ZeroDivisionException;
  */
 public class ArithmeticOperation extends Operation {
 
-    /**
+    /** Initializes the ArithmeticOperation class.
      *
-     * @param stack
+     * @param stack the stack data structure on which the operation will work.
      */
     public ArithmeticOperation(ArrayDeque stack) {
         super(stack);
@@ -28,7 +28,9 @@ public class ArithmeticOperation extends Operation {
      * Calls the function suited to the type of Arithmetic operation entered as
      * input.
      *
-     * @param input
+     * @param input the String to analize.
+     * @throws InvalidInputException if the String doesn't correspond to any of
+     * the supported operations.
      */
     @Override
     public void operationInterpreter(String input) {
@@ -52,6 +54,9 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first two elements and pushes in the Stack the
      * result of their sum.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
      */
     public void sum() {
         if (stack.size() < 2) {
@@ -65,6 +70,9 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first two elements and pushes in the Stack the
      * result of their subtraction.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
      */
     public void sub() {
         if (stack.size() < 2) {
@@ -78,6 +86,9 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first two elements and pushes in the Stack the
      * result of their product.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
      */
     public void product() {
         if (stack.size() < 2) {
@@ -91,6 +102,10 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first two elements and pushes in the Stack the
      * result of their division.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
+     * @throws ZeroDivisionException if the number on top of the stack is 0.
      */
     public void division() {
         if (stack.size() < 2) {
@@ -110,6 +125,9 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first element and pushes in the Stack its
      * square root.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
      */
     public void sqrt() {
         if (stack.size() < 1) {
@@ -122,6 +140,9 @@ public class ArithmeticOperation extends Operation {
     /**
      * Pops out of the Stack the first element and pushes in the Stack its
      * inverse.
+     * 
+     * @throws NotEnoughDataException if the Stack doesn't contain enough
+     * elements for the operation.
      */
     public void inversion() {
         if (stack.size() < 1) {

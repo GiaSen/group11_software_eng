@@ -5,15 +5,16 @@ package ComplexCalculatorException;
  */
 public class InvalidInputException extends RuntimeException {
 
-    /**
+    /** Constructs an ArithmeticException with no detail message.
      *
      */
     public InvalidInputException() {
     }
 
     /**
+     * Constructs an InvalidInputException with the specified detail message.
      *
-     * @param string
+     * @param string the detail message.
      */
     public InvalidInputException(String string) {
         super(string);
