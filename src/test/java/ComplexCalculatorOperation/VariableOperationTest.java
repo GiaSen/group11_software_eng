@@ -6,6 +6,8 @@ package ComplexCalculatorOperation;
 
 import ComplexCalculator.Complex;
 import ComplexCalculatorException.InvalidInputException;
+import ComplexCalculatorException.NotEnoughStackElementsException;
+import ComplexCalculatorException.VariableException;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import org.junit.jupiter.api.AfterEach;
@@ -72,16 +74,15 @@ public class VariableOperationTest {
 
     @Test
     public void testFromStackToVar2() {
-        stack.push(c2);
-        varOp.fromStackToVar("a");
-        assertEquals(c2, map.get("a"));
+        assertThrows(NotEnoughStackElementsException.class, () -> varOp.fromStackToVar("a"));
     }
 
     @Test
     public void testFromStackToVar3() {
         stack.push(c3);
+        stack.push(c2);
         varOp.fromStackToVar("a");
-        assertEquals(c3, map.get("a"));
+        assertEquals(c2, map.get("a"));
     }
 
     /**
@@ -96,16 +97,15 @@ public class VariableOperationTest {
 
     @Test
     public void testFromVarToStack2() {
-        map.put("a", c2);
-        varOp.fromVarToStack("a");
-        assertEquals(c2, stack.getFirst());
+        assertThrows(VariableException.class, () -> varOp.fromVarToStack("a"));
     }
 
     @Test
     public void testFromVarToStack3() {
         map.put("a", c3);
-        varOp.fromVarToStack("a");
-        assertEquals(c3, stack.getFirst());
+        map.put("b", c2);
+        varOp.fromVarToStack("b");
+        assertEquals(c2, stack.getFirst());
     }
 
     /**
@@ -122,11 +122,19 @@ public class VariableOperationTest {
 
     @Test
     public void testSumVar2() {
+        assertThrows(VariableException.class, () -> varOp.sumVar("a"));
+    }
+
+    @Test
+    public void testSumVar3() {
         map.put("a", c);
-        stack.push(c3);
-        Complex sum = c.sum(c3);
-        varOp.sumVar("a");
-        assertEquals(sum, map.get("a"));
+        assertThrows(NotEnoughStackElementsException.class, () -> varOp.sumVar("a"));
+    }
+
+    @Test
+    public void testSumVar4() {
+        stack.push(c);
+        assertThrows(VariableException.class, () -> varOp.sumVar("a"));
     }
 
     /**
@@ -143,11 +151,19 @@ public class VariableOperationTest {
 
     @Test
     public void testSubVar2() {
+        assertThrows(VariableException.class, () -> varOp.subVar("a"));
+    }
+
+    @Test
+    public void testSubVar3() {
         map.put("a", c);
-        stack.push(c2);
-        Complex sub = c.sub(c2);
-        varOp.subVar("a");
-        assertEquals(sub, map.get("a"));
+        assertThrows(NotEnoughStackElementsException.class, () -> varOp.subVar("a"));
+    }
+
+    @Test
+    public void testSubVar4() {
+        stack.push(c);
+        assertThrows(VariableException.class, () -> varOp.subVar("a"));
     }
 
     /**
