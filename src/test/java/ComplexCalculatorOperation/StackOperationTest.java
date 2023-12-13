@@ -80,7 +80,7 @@ public class StackOperationTest {
     public void testClear1() {
         System.out.println("Clear1");
 
-        stack.clear();
+        instance.clear();
 
         assertEquals(0, stack.size());
     }
