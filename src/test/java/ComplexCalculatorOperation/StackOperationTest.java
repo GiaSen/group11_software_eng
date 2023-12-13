@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package ComplexCalculatorOperation;
 
 import ComplexCalculator.Complex;
@@ -17,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class StackOperationTest {
 
@@ -56,11 +52,10 @@ public class StackOperationTest {
         Complex n2 = new Complex(-9, 1.2);
         stack.push(n1);
         stack.push(n2);
-        
+
         instance.operationInterpreter("clear");
-        
-        assertEquals(0,stack.size());
-        
+
+        assertEquals(0, stack.size());
 
     }
 
@@ -93,7 +88,7 @@ public class StackOperationTest {
     @Test
     public void testClear2() {
         System.out.println("Clear2");
-        
+
         Complex n = new Complex(1, 2);
         stack.push(n);
 
@@ -105,7 +100,7 @@ public class StackOperationTest {
     @Test
     public void testClear3() {
         System.out.println("Clear3");
-        
+
         Complex n1 = new Complex(1, 2);
         Complex n2 = new Complex(-10, 2.5);
         Complex n3 = new Complex(23, -18);
@@ -197,7 +192,7 @@ public class StackOperationTest {
         int size = stack.size();
 
         instance.dup();
-        
+
         assertEquals(size + 1, stack.size());
         assertEquals(n2, stack.getFirst());
     }
@@ -210,7 +205,7 @@ public class StackOperationTest {
         System.out.println("Swap1");
 
         int size = stack.size();
-        
+
         assertThrows(NotEnoughStackElementsException.class, () -> instance.swap());
         assertEquals(size, stack.size());
     }
@@ -220,7 +215,7 @@ public class StackOperationTest {
         System.out.println("Swap2");
 
         int size = stack.size();
-        
+
         Complex n1 = new Complex(10, 3);
         stack.push(n1);
 
@@ -236,7 +231,7 @@ public class StackOperationTest {
         Complex n2 = new Complex(1, -3);
         stack.push(n1);
         stack.push(n2);
-        
+
         int size = stack.size();
 
         instance.swap();
@@ -275,10 +270,10 @@ public class StackOperationTest {
         System.out.println("Over1");
 
         int size = stack.size();
-        
+
         assertThrows(NotEnoughStackElementsException.class, () -> instance.over());
-        assertEquals(size,stack.size());
-  
+        assertEquals(size, stack.size());
+
     }
 
     @Test
@@ -291,7 +286,7 @@ public class StackOperationTest {
         int size = stack.size();
 
         assertThrows(NotEnoughStackElementsException.class, () -> instance.over());
-        assertEquals(size,stack.size());
+        assertEquals(size, stack.size());
     }
 
     @Test
@@ -302,7 +297,7 @@ public class StackOperationTest {
         Complex n2 = new Complex(1, -3);
         stack.push(n1);
         stack.push(n2);
-        
+
         int size = stack.size();
 
         instance.over();
@@ -329,7 +324,7 @@ public class StackOperationTest {
         stack.push(n1);
         stack.push(n2);
         stack.push(n3);
-        
+
         int size = stack.size();
 
         instance.over();

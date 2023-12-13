@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ComplexCalculatorOperation;
 
 import ComplexCalculator.Complex;
@@ -17,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Pietro
+ * @author group11
  */
 public class ArithmeticOperationTest {
-    
+
     ArithmeticOperation instance;
     ArrayDeque<Complex> stack;
 
@@ -48,35 +43,35 @@ public class ArithmeticOperationTest {
     @Test
     public void testOperationInterpreter() {
         System.out.println("opInterpreter");
-        
+
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
-        
+
         stack.push(n1);
         stack.push(n2);
 
         instance.operationInterpreter("+");
-        
+
         assertEquals(n1.sum(n2), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testOperationInterpreter2() {
         System.out.println("opInterpreter wrong input");
-        
+
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
-        
+
         stack.push(n1);
         stack.push(n2);
-        
+
         assertThrows(InvalidInputException.class, () -> {
             instance.operationInterpreter("sum");
         });
         assertEquals(stack.size(), 2);
     }
-    
+
     /**
      * Test of sum method, of class ArithmeticOperation.
      */
@@ -85,7 +80,7 @@ public class ArithmeticOperationTest {
         System.out.println("sum");
         Complex n1 = new Complex(4, 2);
         Complex n2 = new Complex(2, 4);
-        
+
         stack.push(n1);
         stack.push(n2);
 
@@ -120,7 +115,7 @@ public class ArithmeticOperationTest {
         assertEquals(n1.sub(n2), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testSub2() {
         System.out.println("sub fail");
@@ -146,7 +141,7 @@ public class ArithmeticOperationTest {
         assertEquals(n1.product(n2), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testProduct2() {
         System.out.println("product fail");
@@ -172,7 +167,7 @@ public class ArithmeticOperationTest {
         assertEquals(n1.division(n2), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testDivision2() {
         System.out.println("division fail");
@@ -184,7 +179,7 @@ public class ArithmeticOperationTest {
         });
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testDivision3() {
         System.out.println("division by 0");
@@ -210,7 +205,7 @@ public class ArithmeticOperationTest {
         assertEquals(n1.negate(), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testInversion2() {
         System.out.println("inversion fail");
@@ -232,7 +227,7 @@ public class ArithmeticOperationTest {
         assertEquals(n1.sqrt(), stack.getFirst());
         assertEquals(stack.size(), 1);
     }
-    
+
     @Test
     public void testSqrt2() {
         System.out.println("sqrt fail");

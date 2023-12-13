@@ -9,6 +9,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ *
+ * @author group11
+ */
 public class ComplexTest {
 
     public ComplexTest() {
@@ -30,11 +34,14 @@ public class ComplexTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of constructor method, of class Complex.
+     */
     @Test
     public void testComplex() {
         System.out.println("Complex wrong input");
         //example of bad input insertion
-        assertThrows(InvalidInputException.class, () -> new Complex("Testing")); 
+        assertThrows(InvalidInputException.class, () -> new Complex("Testing"));
     }
 
     /**

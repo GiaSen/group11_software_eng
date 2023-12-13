@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package ComplexCalculatorOperation;
 
 import ComplexCalculator.Complex;
@@ -17,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author vince
+ * @author group11
  */
 public class CalculatorTest {
 
@@ -126,11 +122,11 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testStackLimit(){
+    public void testStackLimit() {
         Integer i;
-        for(i=0;i<1000000;i++){ //checks if the stack supports 1_000_000 elements
-            instance.interpreter(i.toString()+ "+" + i.toString()+"j");
+        for (i = 0; i < 1000000; i++) { //checks if the stack supports 1_000_000 elements
+            instance.interpreter(i.toString() + "+" + i.toString() + "j");
         }
-        assertEquals(i,instance.getStack().size());
+        assertEquals(i, instance.getStack().size());
     }
 }
