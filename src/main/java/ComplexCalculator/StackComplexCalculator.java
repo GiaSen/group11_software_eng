@@ -22,7 +22,7 @@ public class StackComplexCalculator extends Application {
         scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         stage.setResizable(false);
 
-        stage.setTitle("Scientific Calculator Beta");
+        stage.setTitle("Scientific Calculator");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
 
         stage.setScene(scene);
